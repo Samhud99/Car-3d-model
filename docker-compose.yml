@@ -1,0 +1,291 @@
+version: '3.8'
+
+# ============================================================
+# Car Model Skill — Hardened Docker Compose
+# ============================================================
+# Security model:
+#   - OpenClaw is fully contained. internal=true on all networks.
+#   - Egress proxy controls ALL outbound connections (allowlist only).
+#   - Only interface: workspace/ volume mount (files in, files out).
+#   - OpenClaw runs as non-root (uid 1000).
+#   - Read-only root filesystem with tmpfs for runtime writes.
+#   - All Linux capabilities dropped.
+# ============================================================
+
+services:
+
+  # ----------------------------------------------------------
+  # OpenClaw Gateway
+  # ----------------------------------------------------------
+  openclaw-gateway:
+    image: ghcr.io/openclaw/openclaw:2026.3.2   # pinned — do not use :latest
+    container_name: car3d-openclaw-gateway
+    restart: unless-stopped
+
+    # Non-root execution
+    user: "1000:1000"
+
+    # Read-only root filesystem — prevents any persistent change to container
+    read_only: true
+
+    # Drop ALL Linux capabilities
+    cap_drop:
+      - ALL
+
+    # Prevent privilege escalation inside container
+    security_opt:
+      - no-new-privileges:true
+    
+    # Tmpfs mounts — runtime writes go here, not to host or container layer
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+      - /var/tmp:size=128m
+      - /run:size=64m
+    
+    # Resource limits — prevent runaway Blender jobs consuming host
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+    
+    # Volume mounts — ONLY these two, nothing else
+    volumes:
+      - openclaw-config:/home/node/.openclaw     # config, memory, API keys
+      - ./workspace:/home/node/.openclaw/workspace:z  # jobs in, GLB out
+      - ./skills:/home/node/.openclaw/skills:ro  # skill files (read-only)
+    
+    # Bind to loopback ONLY — never exposed to host network or internet
+    ports:
+      - "127.0.0.1:18789:18789"
+    
+    environment:
+      - NODE_ENV=production
+      - OPENCLAW_GATEWAY_BIND=loopback
+      - ZAI_API_KEY_FILE=/run/secrets/zai_api_key
+      - HTTPS_PROXY=http://egress-proxy:3128
+      - HTTP_PROXY=http://egress-proxy:3128
+      - NO_PROXY=localhost,127.0.0.1
+
+    secrets:
+      - zai_api_key
+    
+    # Isolated internal network — no direct internet access
+    networks:
+      - openclaw-internal
+    
+    depends_on:
+      - egress-proxy
+    
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:18789/health').then(r => process.exit(r.ok ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ----------------------------------------------------------
+  # OpenClaw CLI — management commands only
+  # Starts only when explicitly called via docker compose run
+  # ----------------------------------------------------------
+  openclaw-cli:
+    image: ghcr.io/openclaw/openclaw:2026.3.2    # pinned — match gateway version
+    container_name: car3d-openclaw-cli
+    profiles:
+      - cli                                      # never starts automatically
+
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=128m
+
+    volumes:
+      - openclaw-config:/home/node/.openclaw
+
+    networks:
+      - openclaw-internal
+
+    secrets:
+      - zai_api_key
+
+    environment:
+      - ZAI_API_KEY_FILE=/run/secrets/zai_api_key
+
+  # ----------------------------------------------------------
+  # Egress Proxy — Squid with strict allowlist
+  # The ONLY path for outbound internet requests.
+  # OpenClaw cannot bypass this — it has no other network route.
+  # ----------------------------------------------------------
+  egress-proxy:
+    image: ubuntu/squid:6.6-24.04_beta            # pinned — do not use :latest
+    container_name: car3d-egress-proxy
+    restart: unless-stopped
+    
+    read_only: true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE                         # squid needs to bind port 3128
+    security_opt:
+      - no-new-privileges:true
+    
+    tmpfs:
+      - /var/spool/squid:size=512m
+      - /var/log/squid:size=128m
+      - /run:size=64m
+      - /tmp:size=64m
+    
+    volumes:
+      - ./security/squid.conf:/etc/squid/squid.conf:ro  # allowlist config
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    
+    networks:
+      - openclaw-internal                        # receives requests from OpenClaw
+      - internet-egress                          # can reach the internet (restricted by squid)
+
+  # ----------------------------------------------------------
+  # Express Backend — serves React frontend + proxies to OpenClaw
+  # ----------------------------------------------------------
+  express-backend:
+    build: ./backend
+    container_name: car3d-express-backend
+    restart: unless-stopped
+
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+    tmpfs:
+      - /tmp:size=64m
+
+    ports:
+      - "0.0.0.0:${FRONTEND_PORT:-3000}:3000"
+
+    volumes:
+      - ./workspace:/workspace:ro
+      - ./frontend/dist:/app/frontend/dist:ro
+
+    environment:
+      - NODE_ENV=production
+      - CARS_JSON_PATH=/workspace/output/cars.json
+
+    secrets:
+      - frontend_token
+
+    networks:
+      - openclaw-internal
+      - frontend-bridge
+
+    depends_on:
+      - openclaw-gateway
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r => process.exit(r.ok ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ----------------------------------------------------------
+  # Car Scraper — on-demand, fetches car data from RACV/CarsGuide/Redbook
+  # ----------------------------------------------------------
+  car-scraper:
+    build: ./scraper
+    container_name: car3d-car-scraper
+    profiles:
+      - scraper
+
+    user: "1000:1000"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+    tmpfs:
+      - /tmp:size=512m
+
+    volumes:
+      - ./workspace:/workspace:z
+
+    environment:
+      - HTTPS_PROXY=http://egress-proxy:3128
+      - HTTP_PROXY=http://egress-proxy:3128
+      - NO_PROXY=localhost,127.0.0.1
+
+    networks:
+      - openclaw-internal
+
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+
+# ----------------------------------------------------------
+# Secrets — API key loaded from file, not environment variable
+# ----------------------------------------------------------
+secrets:
+  zai_api_key:
+    file: ./secrets/zai_api_key.txt               # chmod 0400 this file
+  frontend_token:
+    file: ./secrets/frontend_token.txt
+
+# ----------------------------------------------------------
+# Named Volumes
+# ----------------------------------------------------------
+volumes:
+  openclaw-config:
+    name: car3d-openclaw-config
+    # Stays inside Docker volume storage — never on host filesystem directly
+
+# ----------------------------------------------------------
+# Networks
+# ============================================================
+# openclaw-internal: internal=true means NO external routing.
+#   OpenClaw <-> egress-proxy only. No internet.
+#
+# internet-egress: only the proxy container lives here.
+#   Routes through squid allowlist before hitting internet.
+# ----------------------------------------------------------
+networks:
+  openclaw-internal:
+    name: car3d-openclaw-internal
+    driver: bridge
+    internal: true                               # THE KEY LINE — blocks all external access
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+  
+  internet-egress:
+    name: car3d-internet-egress
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/24
+
+  frontend-bridge:
+    name: car3d-frontend-bridge
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

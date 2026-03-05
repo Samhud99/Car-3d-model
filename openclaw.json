@@ -1,0 +1,65 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "zai/glm-5",
+        "fallbacks": [
+          "zai/glm-4.7",
+          "zai/glm-4.6",
+          "zai/glm-4.5-air"
+        ]
+      },
+      "temperature": 0.6,
+      "sandbox": {
+        "mode": "all",
+        "docker": {
+          "readOnlyRoot": true,
+          "network": "none",
+          "capDrop": ["ALL"],
+          "user": "1000:1000",
+          "memory": "2g",
+          "pidsLimit": 256,
+          "tmpfs": ["/tmp", "/var/tmp", "/run"]
+        },
+        "prune": {
+          "idleHours": 24,
+          "maxAgeDays": 7
+        }
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "zai": {
+        "apiKey": "${ZAI_API_KEY}",
+        "baseUrl": "https://open.bigmodel.cn/api/paas/v4"
+      }
+    }
+  },
+  "gateway": {
+    "bind": "loopback",
+    "port": 18789
+  },
+  "tools": {
+    "sandbox": {
+      "tools": {
+        "allow": [
+          "exec",
+          "read",
+          "write",
+          "edit",
+          "browser"
+        ],
+        "deny": [
+          "process_kill",
+          "network_raw"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "level": "info",
+    "sessions": true,
+    "actions": true
+  }
+}

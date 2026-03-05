@@ -1,0 +1,233 @@
+{
+  "updated": "2026-03-06T00:00:00Z",
+  "source": "seed",
+  "cars": [
+    {
+      "make": "Audi",
+      "models": [
+        { "name": "A3", "types": ["Sedan", "Hatchback"] },
+        { "name": "A4", "types": ["Sedan", "Wagon"] },
+        { "name": "A5", "types": ["Coupe", "Convertible"] },
+        { "name": "Q3", "types": ["SUV"] },
+        { "name": "Q5", "types": ["SUV"] },
+        { "name": "Q7", "types": ["SUV"] },
+        { "name": "e-tron", "types": ["SUV", "Electric"] }
+      ]
+    },
+    {
+      "make": "BMW",
+      "models": [
+        { "name": "1 Series", "types": ["Hatchback"] },
+        { "name": "3 Series", "types": ["Sedan", "Wagon"] },
+        { "name": "5 Series", "types": ["Sedan", "Wagon"] },
+        { "name": "X1", "types": ["SUV"] },
+        { "name": "X3", "types": ["SUV"] },
+        { "name": "X5", "types": ["SUV"] },
+        { "name": "iX", "types": ["SUV", "Electric"] },
+        { "name": "i4", "types": ["Sedan", "Electric"] }
+      ]
+    },
+    {
+      "make": "BYD",
+      "models": [
+        { "name": "Atto 3", "types": ["SUV", "Electric"] },
+        { "name": "Dolphin", "types": ["Hatchback", "Electric"] },
+        { "name": "Seal", "types": ["Sedan", "Electric"] },
+        { "name": "Shark", "types": ["Ute", "Hybrid"] }
+      ]
+    },
+    {
+      "make": "Ford",
+      "models": [
+        { "name": "Ranger", "types": ["Ute", "4x4"] },
+        { "name": "Everest", "types": ["SUV", "4x4"] },
+        { "name": "Puma", "types": ["SUV"] },
+        { "name": "Mustang", "types": ["Coupe", "Convertible"] },
+        { "name": "Mustang Mach-E", "types": ["SUV", "Electric"] },
+        { "name": "Transit", "types": ["Van"] }
+      ]
+    },
+    {
+      "make": "GWM",
+      "models": [
+        { "name": "Ute Cannon", "types": ["Ute", "4x4"] },
+        { "name": "Haval H6", "types": ["SUV"] },
+        { "name": "Haval Jolion", "types": ["SUV"] },
+        { "name": "Ora", "types": ["Hatchback", "Electric"] },
+        { "name": "Tank 300", "types": ["SUV", "4x4"] }
+      ]
+    },
+    {
+      "make": "Honda",
+      "models": [
+        { "name": "Civic", "types": ["Sedan", "Hatchback"] },
+        { "name": "Accord", "types": ["Sedan", "Hybrid"] },
+        { "name": "CR-V", "types": ["SUV", "Hybrid"] },
+        { "name": "HR-V", "types": ["SUV"] },
+        { "name": "ZR-V", "types": ["SUV"] },
+        { "name": "Jazz", "types": ["Hatchback", "Hybrid"] }
+      ]
+    },
+    {
+      "make": "Hyundai",
+      "models": [
+        { "name": "i30", "types": ["Hatchback", "Sedan"] },
+        { "name": "Tucson", "types": ["SUV", "Hybrid"] },
+        { "name": "Santa Fe", "types": ["SUV", "Hybrid"] },
+        { "name": "Kona", "types": ["SUV", "Electric"] },
+        { "name": "Ioniq 5", "types": ["SUV", "Electric"] },
+        { "name": "Ioniq 6", "types": ["Sedan", "Electric"] },
+        { "name": "Staria", "types": ["People Mover", "Van"] },
+        { "name": "iLoad", "types": ["Van"] }
+      ]
+    },
+    {
+      "make": "Isuzu",
+      "models": [
+        { "name": "D-Max", "types": ["Ute", "4x4"] },
+        { "name": "MU-X", "types": ["SUV", "4x4"] }
+      ]
+    },
+    {
+      "make": "Jeep",
+      "models": [
+        { "name": "Wrangler", "types": ["SUV", "4x4", "Convertible"] },
+        { "name": "Grand Cherokee", "types": ["SUV", "4x4"] },
+        { "name": "Compass", "types": ["SUV"] },
+        { "name": "Gladiator", "types": ["Ute", "4x4"] },
+        { "name": "Avenger", "types": ["SUV", "Electric"] }
+      ]
+    },
+    {
+      "make": "Kia",
+      "models": [
+        { "name": "Cerato", "types": ["Sedan", "Hatchback"] },
+        { "name": "Sportage", "types": ["SUV", "Hybrid"] },
+        { "name": "Sorento", "types": ["SUV", "Hybrid"] },
+        { "name": "Seltos", "types": ["SUV"] },
+        { "name": "EV6", "types": ["SUV", "Electric"] },
+        { "name": "EV9", "types": ["SUV", "Electric"] },
+        { "name": "Carnival", "types": ["People Mover"] },
+        { "name": "Stonic", "types": ["SUV"] }
+      ]
+    },
+    {
+      "make": "Land Rover",
+      "models": [
+        { "name": "Defender", "types": ["SUV", "4x4"] },
+        { "name": "Discovery", "types": ["SUV", "4x4"] },
+        { "name": "Discovery Sport", "types": ["SUV"] },
+        { "name": "Range Rover", "types": ["SUV", "4x4"] },
+        { "name": "Range Rover Sport", "types": ["SUV", "4x4"] },
+        { "name": "Range Rover Evoque", "types": ["SUV"] }
+      ]
+    },
+    {
+      "make": "Mazda",
+      "models": [
+        { "name": "Mazda2", "types": ["Hatchback"] },
+        { "name": "Mazda3", "types": ["Sedan", "Hatchback"] },
+        { "name": "CX-3", "types": ["SUV"] },
+        { "name": "CX-5", "types": ["SUV"] },
+        { "name": "CX-8", "types": ["SUV"] },
+        { "name": "CX-9", "types": ["SUV"] },
+        { "name": "BT-50", "types": ["Ute", "4x4"] },
+        { "name": "MX-5", "types": ["Convertible", "Coupe"] }
+      ]
+    },
+    {
+      "make": "Mercedes-Benz",
+      "models": [
+        { "name": "A-Class", "types": ["Hatchback", "Sedan"] },
+        { "name": "C-Class", "types": ["Sedan", "Wagon", "Coupe"] },
+        { "name": "E-Class", "types": ["Sedan", "Wagon", "Coupe"] },
+        { "name": "GLA", "types": ["SUV"] },
+        { "name": "GLC", "types": ["SUV", "Coupe"] },
+        { "name": "GLE", "types": ["SUV"] },
+        { "name": "EQA", "types": ["SUV", "Electric"] },
+        { "name": "EQB", "types": ["SUV", "Electric"] }
+      ]
+    },
+    {
+      "make": "MG",
+      "models": [
+        { "name": "MG3", "types": ["Hatchback", "Hybrid"] },
+        { "name": "ZS", "types": ["SUV"] },
+        { "name": "ZS EV", "types": ["SUV", "Electric"] },
+        { "name": "HS", "types": ["SUV"] },
+        { "name": "MG4", "types": ["Hatchback", "Electric"] }
+      ]
+    },
+    {
+      "make": "Mitsubishi",
+      "models": [
+        { "name": "Triton", "types": ["Ute", "4x4"] },
+        { "name": "Outlander", "types": ["SUV", "Hybrid"] },
+        { "name": "ASX", "types": ["SUV"] },
+        { "name": "Pajero Sport", "types": ["SUV", "4x4"] },
+        { "name": "Eclipse Cross", "types": ["SUV", "Hybrid"] },
+        { "name": "Express", "types": ["Van"] }
+      ]
+    },
+    {
+      "make": "Nissan",
+      "models": [
+        { "name": "X-Trail", "types": ["SUV"] },
+        { "name": "Qashqai", "types": ["SUV"] },
+        { "name": "Navara", "types": ["Ute", "4x4"] },
+        { "name": "Patrol", "types": ["SUV", "4x4"] },
+        { "name": "Juke", "types": ["SUV"] },
+        { "name": "Leaf", "types": ["Hatchback", "Electric"] }
+      ]
+    },
+    {
+      "make": "Subaru",
+      "models": [
+        { "name": "Forester", "types": ["SUV"] },
+        { "name": "Outback", "types": ["Wagon", "SUV"] },
+        { "name": "XV", "types": ["SUV"] },
+        { "name": "Impreza", "types": ["Hatchback", "Sedan"] },
+        { "name": "WRX", "types": ["Sedan"] },
+        { "name": "BRZ", "types": ["Coupe"] },
+        { "name": "Solterra", "types": ["SUV", "Electric"] }
+      ]
+    },
+    {
+      "make": "Tesla",
+      "models": [
+        { "name": "Model 3", "types": ["Sedan", "Electric"] },
+        { "name": "Model Y", "types": ["SUV", "Electric"] },
+        { "name": "Model S", "types": ["Sedan", "Electric"] },
+        { "name": "Model X", "types": ["SUV", "Electric"] },
+        { "name": "Cybertruck", "types": ["Ute", "Electric"] }
+      ]
+    },
+    {
+      "make": "Toyota",
+      "models": [
+        { "name": "Camry", "types": ["Sedan", "Hybrid"] },
+        { "name": "Corolla", "types": ["Sedan", "Hatchback", "Hybrid"] },
+        { "name": "RAV4", "types": ["SUV", "Hybrid"] },
+        { "name": "HiLux", "types": ["Ute", "4x4"] },
+        { "name": "LandCruiser", "types": ["SUV", "4x4"] },
+        { "name": "Kluger", "types": ["SUV", "Hybrid"] },
+        { "name": "Yaris", "types": ["Hatchback"] },
+        { "name": "Yaris Cross", "types": ["SUV", "Hybrid"] },
+        { "name": "C-HR", "types": ["SUV", "Hybrid"] },
+        { "name": "HiAce", "types": ["Van"] }
+      ]
+    },
+    {
+      "make": "Volkswagen",
+      "models": [
+        { "name": "Golf", "types": ["Hatchback", "Wagon"] },
+        { "name": "Tiguan", "types": ["SUV"] },
+        { "name": "T-Roc", "types": ["SUV"] },
+        { "name": "T-Cross", "types": ["SUV"] },
+        { "name": "Amarok", "types": ["Ute", "4x4"] },
+        { "name": "ID.4", "types": ["SUV", "Electric"] },
+        { "name": "Multivan", "types": ["People Mover", "Van"] }
+      ]
+    }
+  ]
+}
