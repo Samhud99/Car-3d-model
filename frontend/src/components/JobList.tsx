@@ -1,75 +1,65 @@
+import { useState } from "react";
 import type { Job } from "../types.js";
+import { ModelViewer } from "./ModelViewer.js";
 
 interface JobListProps {
   jobs: Job[];
 }
 
-const statusColors: Record<string, string> = {
-  pending: "#f59e0b",
-  processing: "#3b82f6",
-  completed: "#10b981",
-  failed: "#ef4444",
-  error: "#ef4444",
-};
+function statusClass(status: string): string {
+  switch (status) {
+    case "pending":
+      return "status-badge status-pending";
+    case "processing":
+      return "status-badge status-processing";
+    case "completed":
+      return "status-badge status-completed";
+    case "failed":
+    case "error":
+      return "status-badge status-failed";
+    default:
+      return "status-badge";
+  }
+}
 
 export function JobList({ jobs }: JobListProps) {
+  const [viewingModel, setViewingModel] = useState<Job | null>(null);
+
   if (jobs.length === 0) {
     return null;
   }
 
   return (
-    <div>
+    <div className="jobs-section">
       <h2>Jobs</h2>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          fontSize: 14,
-        }}
-      >
-        <thead>
-          <tr>
-            <th style={{ textAlign: "left", padding: 8, borderBottom: "2px solid #ddd" }}>
-              Car
-            </th>
-            <th style={{ textAlign: "left", padding: 8, borderBottom: "2px solid #ddd" }}>
-              Status
-            </th>
-            <th style={{ textAlign: "left", padding: 8, borderBottom: "2px solid #ddd" }}>
-              ID
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {jobs.map((job) => (
-            <tr key={job.id}>
-              <td style={{ padding: 8, borderBottom: "1px solid #eee" }}>
-                {job.make} {job.model} ({job.type})
-              </td>
-              <td
-                style={{
-                  padding: 8,
-                  borderBottom: "1px solid #eee",
-                  color: statusColors[job.status] || "#666",
-                  fontWeight: 600,
-                }}
+      {jobs.map((job) => (
+        <div key={job.id} className="job-card">
+          <div className="job-car">
+            {job.year} {job.make} {job.model}{" "}
+            <span className="job-type">{job.type} — {job.subtype}</span>
+          </div>
+          <div className="job-meta">
+            <span className="job-id">{job.id.slice(0, 8)}</span>
+            <span className={statusClass(job.status)}>{job.status}</span>
+            {job.status === "completed" && (
+              <button
+                className="view-model-btn"
+                onClick={() => setViewingModel(job)}
               >
-                {job.status}
-              </td>
-              <td
-                style={{
-                  padding: 8,
-                  borderBottom: "1px solid #eee",
-                  fontFamily: "monospace",
-                  fontSize: 12,
-                }}
-              >
-                {job.id}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                View 3D Model
+              </button>
+            )}
+          </div>
+        </div>
+      ))}
+
+      {viewingModel && (
+        <ModelViewer
+          jobId={viewingModel.id}
+          carName={`${viewingModel.year} ${viewingModel.make} ${viewingModel.model}`}
+          onClose={() => setViewingModel(null)}
+        />
+      )}
     </div>
   );
 }

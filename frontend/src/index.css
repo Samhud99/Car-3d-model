@@ -1,0 +1,1343 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-hover: #1a1a1a;
+  --border: #2a2a2a;
+  --border-focus: #525252;
+  --text: #fafafa;
+  --text-muted: #a1a1a1;
+  --text-dim: #666;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.app-container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  min-height: 100vh;
+}
+
+.app-header {
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.app-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+/* Auth screen */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.auth-card .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+select,
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+  appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23a1a1a1' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+select:focus,
+input:focus {
+  border-color: var(--border-focus);
+}
+
+select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-msg {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius);
+  color: var(--error);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* Job list */
+.jobs-section {
+  margin-top: 24px;
+}
+
+.jobs-section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.job-car {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.job-car .job-type {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.job-id {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.status-processing {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent);
+}
+
+.status-completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--success);
+}
+
+.status-failed,
+.status-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Provider logos */
+.provider-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Model Viewer */
+.model-viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.model-viewer-container {
+  background: #1e1e2e;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.model-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.model-viewer-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.model-viewer-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.model-viewer-close:hover {
+  background: #333;
+  color: #fff;
+}
+
+.view-model-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.view-model-btn:hover {
+  background: #4338ca;
+}
+
+.model-viewer-body {
+  min-height: 500px;
+}
+
+.model-viewer-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  color: #94a3b8;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.model-viewer-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  color: var(--error);
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ========================================
+   ASSEMBLY LINE PROCESSING ANIMATION
+   12s cycle: 8s assembly + 4s drive-off/reset
+   ======================================== */
+
+.processing-view {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.assembly-line {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(180deg, #080c18 0%, #111828 40%, #162033 70%, #1a2540 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid #1e293b;
+}
+
+/* --- Factory background --- */
+.factory-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+
+.factory-beam {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.025);
+  width: 2px;
+  top: 0;
+  height: 100%;
+}
+.beam-1 { left: 10%; }
+.beam-2 { left: 28%; }
+.beam-3 { left: 50%; }
+.beam-4 { left: 72%; }
+.beam-5 { left: 90%; }
+
+.factory-girder {
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04) 20%, rgba(255,255,255,0.04) 80%, transparent);
+}
+.girder-top { top: 30px; }
+.girder-mid { top: 90px; }
+
+/* --- Station indicator lights --- */
+.station-light {
+  position: absolute;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0f3d0f;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  animation: stationPulse 12s ease-in-out infinite;
+}
+.light-1 { left: 10%; animation-delay: 0.5s; }
+.light-2 { left: 28%; animation-delay: 2s; }
+.light-3 { left: 50%; animation-delay: 4s; }
+.light-4 { left: 72%; animation-delay: 5.5s; }
+.light-5 { left: 90%; animation-delay: 7s; }
+
+@keyframes stationPulse {
+  0%, 5% { background: #0f3d0f; box-shadow: 0 0 2px rgba(0,0,0,0.5); }
+  8%, 60% { background: #22c55e; box-shadow: 0 0 8px #22c55e, 0 0 16px rgba(34,197,94,0.4); }
+  65%, 100% { background: #0f3d0f; box-shadow: 0 0 2px rgba(0,0,0,0.5); }
+}
+
+/* --- Conveyor belt with rollers --- */
+.conveyor {
+  position: absolute;
+  bottom: 30px;
+  left: 0; right: 0;
+  height: 40px;
+}
+
+.conveyor-surface {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 16px;
+  background: linear-gradient(180deg, #3d3d5c, #2d2d44);
+  border-top: 2px solid #5a5a7a;
+}
+
+.conveyor-rollers {
+  position: absolute;
+  top: 16px;
+  left: 0; right: 0;
+  height: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1a1a2e;
+}
+
+.roller {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #5a5a7a, #33334d);
+  border: 2px solid #44446a;
+  animation: rollerSpin 1.5s linear infinite;
+  position: relative;
+}
+.roller::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 4px; height: 4px;
+  background: #6a6a8a;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rollerSpin {
+  to { transform: rotate(360deg); }
+}
+
+.conveyor-belt-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 200%;
+  height: 16px;
+  animation: beltMove 3s linear infinite;
+}
+
+.belt-seg {
+  width: 60px;
+  height: 16px;
+  border-right: 2px solid rgba(90,90,122,0.5);
+  flex-shrink: 0;
+}
+
+@keyframes beltMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Car assembly (whole group) --- */
+.car-assembly {
+  position: absolute;
+  bottom: 68px;
+  left: 50%;
+  width: 200px;
+  height: 110px;
+  animation: carSlideLifecycle 12s ease-in-out infinite;
+}
+
+/* Lifecycle: slide in from left -> stay center -> drive off right -> reset */
+@keyframes carSlideLifecycle {
+  0%      { transform: translateX(-350px); opacity: 0; }
+  4%      { transform: translateX(-200px); opacity: 1; }
+  8%      { transform: translateX(-50%); opacity: 1; }
+  70%     { transform: translateX(-50%); opacity: 1; }
+  85%     { transform: translateX(300px); opacity: 1; }
+  90%     { transform: translateX(450px); opacity: 0; }
+  91%,100%{ transform: translateX(-350px); opacity: 0; }
+}
+
+/* --- Chassis (bare frame) --- */
+.chassis {
+  position: absolute;
+  bottom: 8px;
+  left: 10px; right: 10px;
+  height: 18px;
+  background: linear-gradient(90deg, #3f3f5f, #4a4a6a, #3f3f5f);
+  border-radius: 4px;
+  border: 1px solid #5a5a7a;
+  animation: chassisShow 12s ease-in-out infinite;
+}
+
+@keyframes chassisShow {
+  0%, 7% { opacity: 0; }
+  10%     { opacity: 1; }
+  70%     { opacity: 1; }
+  78%     { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* --- Engine block --- */
+.engine-block {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  width: 40px;
+  height: 28px;
+  background: linear-gradient(135deg, #555577, #44445a);
+  border: 1px solid #6a6a8a;
+  border-radius: 3px;
+  animation: engineDrop 12s ease-in-out infinite;
+}
+
+.engine-crane {
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  width: 20px;
+  animation: engineDrop 12s ease-in-out infinite;
+}
+
+.crane-cable {
+  width: 2px;
+  height: 40px;
+  background: #888;
+  margin: 0 auto;
+  animation: cableShrink 12s ease-in-out infinite;
+}
+
+@keyframes engineDrop {
+  0%, 12% { opacity: 0; transform: translateY(-60px); }
+  18%     { opacity: 1; transform: translateY(0); }
+  70%     { opacity: 1; transform: translateY(0); }
+  76%     { opacity: 0; transform: translateY(-60px); }
+  100%    { opacity: 0; transform: translateY(-60px); }
+}
+
+@keyframes cableShrink {
+  0%, 12% { height: 80px; }
+  18%     { height: 10px; }
+  70%     { height: 10px; }
+  76%     { height: 80px; }
+  100%    { height: 80px; }
+}
+
+/* --- Body panels --- */
+.body-panel {
+  position: absolute;
+  bottom: 16px;
+  height: 42px;
+  width: 90px;
+  border-radius: 6px 6px 3px 3px;
+}
+
+.panel-left {
+  left: 10px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  animation: panelFromLeft 12s ease-in-out infinite;
+}
+
+.panel-right {
+  right: 10px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  animation: panelFromRight 12s ease-in-out infinite;
+}
+
+@keyframes panelFromLeft {
+  0%, 18%  { opacity: 0; transform: translateX(-80px); }
+  26%      { opacity: 1; transform: translateX(0); }
+  70%      { opacity: 1; transform: translateX(0); }
+  76%      { opacity: 0; transform: translateX(-80px); }
+  100%     { opacity: 0; transform: translateX(-80px); }
+}
+
+@keyframes panelFromRight {
+  0%, 20%  { opacity: 0; transform: translateX(80px); }
+  28%      { opacity: 1; transform: translateX(0); }
+  70%      { opacity: 1; transform: translateX(0); }
+  76%      { opacity: 0; transform: translateX(80px); }
+  100%     { opacity: 0; transform: translateX(80px); }
+}
+
+/* --- Roof --- */
+.car-roof {
+  position: absolute;
+  bottom: 52px;
+  left: 40px; right: 35px;
+  height: 32px;
+  background: linear-gradient(135deg, #5b52f0, #7c6ff7);
+  border-radius: 10px 10px 0 0;
+  animation: roofLower 12s ease-in-out infinite;
+}
+
+@keyframes roofLower {
+  0%, 26%  { opacity: 0; transform: translateY(-50px); }
+  34%      { opacity: 1; transform: translateY(0); }
+  70%      { opacity: 1; transform: translateY(0); }
+  76%      { opacity: 0; transform: translateY(-50px); }
+  100%     { opacity: 0; transform: translateY(-50px); }
+}
+
+/* --- Windshield & rear window --- */
+.car-windshield {
+  position: absolute;
+  bottom: 50px;
+  left: 32px;
+  width: 30px;
+  height: 26px;
+  background: rgba(147, 197, 253, 0.45);
+  border-radius: 5px 2px 0 0;
+  transform-origin: bottom left;
+  animation: windshieldSwing 12s ease-in-out infinite;
+}
+
+@keyframes windshieldSwing {
+  0%, 32%  { opacity: 0; transform: skewX(-10deg) rotateY(90deg); }
+  38%      { opacity: 1; transform: skewX(-10deg) rotateY(0deg); }
+  70%      { opacity: 1; transform: skewX(-10deg) rotateY(0deg); }
+  76%      { opacity: 0; transform: skewX(-10deg) rotateY(90deg); }
+  100%     { opacity: 0; transform: skewX(-10deg) rotateY(90deg); }
+}
+
+.car-rear-window {
+  position: absolute;
+  bottom: 48px;
+  right: 34px;
+  width: 26px;
+  height: 23px;
+  background: rgba(147, 197, 253, 0.35);
+  border-radius: 2px 5px 0 0;
+  transform-origin: bottom right;
+  animation: rearWindowSwing 12s ease-in-out infinite;
+}
+
+@keyframes rearWindowSwing {
+  0%, 34%  { opacity: 0; transform: skewX(10deg) rotateY(-90deg); }
+  40%      { opacity: 1; transform: skewX(10deg) rotateY(0deg); }
+  70%      { opacity: 1; transform: skewX(10deg) rotateY(0deg); }
+  76%      { opacity: 0; transform: skewX(10deg) rotateY(-90deg); }
+  100%     { opacity: 0; transform: skewX(10deg) rotateY(-90deg); }
+}
+
+/* --- Doors --- */
+.car-door {
+  position: absolute;
+  bottom: 18px;
+  width: 38px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  background: transparent;
+}
+
+.door-left {
+  left: 50px;
+  transform-origin: left center;
+  animation: doorSwingLeft 12s ease-in-out infinite;
+}
+
+.door-right {
+  right: 45px;
+  transform-origin: right center;
+  animation: doorSwingRight 12s ease-in-out infinite;
+}
+
+@keyframes doorSwingLeft {
+  0%, 38%  { opacity: 0; transform: rotateY(-70deg); }
+  44%      { opacity: 1; transform: rotateY(0deg); }
+  70%      { opacity: 1; transform: rotateY(0deg); }
+  76%      { opacity: 0; transform: rotateY(-70deg); }
+  100%     { opacity: 0; transform: rotateY(-70deg); }
+}
+
+@keyframes doorSwingRight {
+  0%, 40%  { opacity: 0; transform: rotateY(70deg); }
+  46%      { opacity: 1; transform: rotateY(0deg); }
+  70%      { opacity: 1; transform: rotateY(0deg); }
+  76%      { opacity: 0; transform: rotateY(70deg); }
+  100%     { opacity: 0; transform: rotateY(70deg); }
+}
+
+/* --- Headlights & taillights --- */
+.headlight, .taillight {
+  position: absolute;
+  width: 8px;
+  height: 6px;
+  border-radius: 2px;
+  animation: lightsOn 12s ease-in-out infinite;
+}
+
+.headlight {
+  background: #fef08a;
+  bottom: 30px;
+}
+.headlight-l { left: 6px; }
+.headlight-r { left: 6px; bottom: 22px; }
+
+.taillight {
+  background: #ef4444;
+  bottom: 30px;
+}
+.taillight-l { right: 6px; }
+.taillight-r { right: 6px; bottom: 22px; }
+
+@keyframes lightsOn {
+  0%, 54%  { opacity: 0; box-shadow: none; }
+  58%      { opacity: 1; box-shadow: 0 0 8px currentColor, 0 0 16px currentColor; }
+  70%      { opacity: 1; box-shadow: 0 0 8px currentColor, 0 0 16px currentColor; }
+  76%      { opacity: 0; box-shadow: none; }
+  100%     { opacity: 0; box-shadow: none; }
+}
+
+.headlight { color: #fef08a; }
+.taillight { color: #ef4444; }
+
+/* --- Wheels --- */
+.wheel {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 40%, #666 30%, #333 32%, #333 55%, #555 57%, #444 100%);
+  border: 3px solid #222;
+}
+
+.wheel::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  background: radial-gradient(circle, #aaa, #777);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wheel-fl { bottom: -6px; left: 18px; animation: wheelFromLeft 12s ease-in-out infinite; }
+.wheel-rl { bottom: -6px; right: 18px; animation: wheelFromRight 12s ease-in-out infinite; }
+.wheel-fr { bottom: -6px; left: 18px; animation: wheelFromLeft 12s ease-in-out infinite; animation-delay: 0.3s; }
+.wheel-rr { bottom: -6px; right: 18px; animation: wheelFromRight 12s ease-in-out infinite; animation-delay: 0.3s; }
+
+@keyframes wheelFromLeft {
+  0%, 46%  { opacity: 0; transform: translateX(-60px) rotate(-720deg); }
+  54%      { opacity: 1; transform: translateX(0) rotate(0deg); }
+  70%      { opacity: 1; transform: translateX(0) rotate(0deg); }
+  76%      { opacity: 0; transform: translateX(-60px) rotate(-720deg); }
+  100%     { opacity: 0; transform: translateX(-60px) rotate(-720deg); }
+}
+
+@keyframes wheelFromRight {
+  0%, 48%  { opacity: 0; transform: translateX(60px) rotate(720deg); }
+  56%      { opacity: 1; transform: translateX(0) rotate(0deg); }
+  70%      { opacity: 1; transform: translateX(0) rotate(0deg); }
+  76%      { opacity: 0; transform: translateX(60px) rotate(720deg); }
+  100%     { opacity: 0; transform: translateX(60px) rotate(720deg); }
+}
+
+/* --- Paint spray overlay --- */
+.paint-spray {
+  position: absolute;
+  bottom: 10px;
+  left: 5px; right: 5px;
+  height: 60px;
+  border-radius: 8px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(99,102,241,0.3) 20%,
+    rgba(139,92,246,0.4) 50%,
+    rgba(99,102,241,0.3) 80%,
+    transparent 100%
+  );
+  animation: paintWash 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes paintWash {
+  0%, 56%  { opacity: 0; background-position: -200% center; }
+  60%      { opacity: 0.8; }
+  66%      { opacity: 0.8; background-position: 200% center; }
+  68%      { opacity: 0; }
+  100%     { opacity: 0; }
+}
+
+/* --- Robot arms (5 total) --- */
+/* Arms hang from the ceiling girder (top: 30px) and reach DOWN to the car.
+   Idle: hanging straight down. Active: swing outward to reach car body. */
+.robot-arm {
+  position: absolute;
+  top: 30px;
+}
+
+.arm-base {
+  width: 24px;
+  height: 12px;
+  background: linear-gradient(180deg, #555, #333);
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -1px;
+}
+
+.arm-upper {
+  width: 8px;
+  height: 80px;
+  background: linear-gradient(to bottom, #f59e0b, #d97706);
+  border-radius: 3px;
+  margin-left: 8px;
+  transform-origin: top center;
+}
+
+.arm-lower {
+  width: 6px;
+  height: 60px;
+  background: linear-gradient(to bottom, #d97706, #b45309);
+  border-radius: 2px;
+  margin-left: 9px;
+  transform-origin: top center;
+}
+
+.arm-tool {
+  width: 14px;
+  height: 10px;
+  border-radius: 0 0 3px 3px;
+  margin-left: 4px;
+}
+
+.tool-welder  { background: linear-gradient(135deg, #f59e0b, #dc2626); }
+.tool-bolter  { background: linear-gradient(135deg, #888, #555); }
+.tool-painter { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.tool-gripper { background: linear-gradient(135deg, #777, #444); width: 18px; }
+.tool-scanner { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+
+/* Position arms across the width above the car's path */
+.arm-1 { left: 25%; transform: translateX(-50%); }
+.arm-2 { left: 35%; transform: translateX(-50%); }
+.arm-3 { left: 50%; transform: translateX(-50%); }
+.arm-4 { left: 65%; transform: translateX(-50%); }
+.arm-5 { left: 75%; transform: translateX(-50%); }
+
+.arm-1 .arm-upper { animation: armSwing1 12s ease-in-out infinite; }
+.arm-1 .arm-lower { animation: armLower1 12s ease-in-out infinite; }
+.arm-2 .arm-upper { animation: armSwing2 12s ease-in-out infinite; }
+.arm-2 .arm-lower { animation: armLower2 12s ease-in-out infinite; }
+.arm-3 .arm-upper { animation: armSwing3 12s ease-in-out infinite; }
+.arm-3 .arm-lower { animation: armLower3 12s ease-in-out infinite; }
+.arm-4 .arm-upper { animation: armSwing4 12s ease-in-out infinite; }
+.arm-4 .arm-lower { animation: armLower4 12s ease-in-out infinite; }
+.arm-5 .arm-upper { animation: armSwing5 12s ease-in-out infinite; }
+.arm-5 .arm-lower { animation: armLower5 12s ease-in-out infinite; }
+
+/* Arm 1 - Welder: active 0-20%, welds chassis at front of car */
+@keyframes armSwing1 {
+  0%, 4%    { transform: rotate(0deg); }
+  8%        { transform: rotate(30deg); }
+  12%       { transform: rotate(-30deg); }
+  16%       { transform: rotate(25deg); }
+  20%       { transform: rotate(-20deg); }
+  24%, 100% { transform: rotate(0deg); }
+}
+@keyframes armLower1 {
+  0%, 4%    { transform: rotate(0deg); }
+  8%        { transform: rotate(-35deg); }
+  12%       { transform: rotate(30deg); }
+  16%       { transform: rotate(-25deg); }
+  20%       { transform: rotate(20deg); }
+  24%, 100% { transform: rotate(0deg); }
+}
+
+/* Arm 2 - Bolter: active 18-40%, bolts body panels */
+@keyframes armSwing2 {
+  0%, 18%   { transform: rotate(0deg); }
+  22%       { transform: rotate(30deg); }
+  26%       { transform: rotate(-28deg); }
+  30%       { transform: rotate(25deg); }
+  34%       { transform: rotate(-22deg); }
+  38%       { transform: rotate(15deg); }
+  40%, 100% { transform: rotate(0deg); }
+}
+@keyframes armLower2 {
+  0%, 18%   { transform: rotate(0deg); }
+  22%       { transform: rotate(-30deg); }
+  26%       { transform: rotate(28deg); }
+  30%       { transform: rotate(-25deg); }
+  34%       { transform: rotate(20deg); }
+  38%       { transform: rotate(-12deg); }
+  40%, 100% { transform: rotate(0deg); }
+}
+
+/* Arm 3 - Painter: active 52-68%, sprays paint sweeping side to side */
+@keyframes armSwing3 {
+  0%, 52%   { transform: rotate(0deg); }
+  54%       { transform: rotate(-30deg); }
+  57%       { transform: rotate(30deg); }
+  60%       { transform: rotate(-28deg); }
+  63%       { transform: rotate(28deg); }
+  66%       { transform: rotate(-15deg); }
+  68%, 100% { transform: rotate(0deg); }
+}
+@keyframes armLower3 {
+  0%, 52%   { transform: rotate(0deg); }
+  54%       { transform: rotate(35deg); }
+  57%       { transform: rotate(-30deg); }
+  60%       { transform: rotate(28deg); }
+  63%       { transform: rotate(-25deg); }
+  66%       { transform: rotate(10deg); }
+  68%, 100% { transform: rotate(0deg); }
+}
+
+/* Arm 4 - Gripper: active 34-52%, installs doors/windows */
+@keyframes armSwing4 {
+  0%, 34%   { transform: rotate(0deg); }
+  37%       { transform: rotate(28deg); }
+  40%       { transform: rotate(-25deg); }
+  43%       { transform: rotate(22deg); }
+  46%       { transform: rotate(-20deg); }
+  49%       { transform: rotate(15deg); }
+  52%, 100% { transform: rotate(0deg); }
+}
+@keyframes armLower4 {
+  0%, 34%   { transform: rotate(0deg); }
+  37%       { transform: rotate(-30deg); }
+  40%       { transform: rotate(28deg); }
+  43%       { transform: rotate(-24deg); }
+  46%       { transform: rotate(20deg); }
+  49%       { transform: rotate(-10deg); }
+  52%, 100% { transform: rotate(0deg); }
+}
+
+/* Arm 5 - Scanner: active 58-70%, final inspection scan */
+@keyframes armSwing5 {
+  0%, 58%   { transform: rotate(0deg); }
+  61%       { transform: rotate(-25deg); }
+  64%       { transform: rotate(25deg); }
+  67%       { transform: rotate(-15deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+@keyframes armLower5 {
+  0%, 58%   { transform: rotate(0deg); }
+  61%       { transform: rotate(20deg); }
+  64%       { transform: rotate(-20deg); }
+  67%       { transform: rotate(12deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+
+/* --- Sparks (on welder and bolter arms) --- */
+/* Sparks emanate from the tool tip at the bottom of the arm chain */
+.sparks {
+  position: relative;
+  margin-left: -2px;
+  height: 0;
+  top: 0;
+}
+
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fbbf24;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fbbf24, 0 0 8px #f59e0b;
+  animation: sparkBurst 12s ease-out infinite;
+  opacity: 0;
+}
+
+/* Sparks fly outward and downward from the tool tip */
+.spark:nth-child(1) { --sx: -14px; --sy: 12px; --d: 0s; }
+.spark:nth-child(2) { --sx: 12px; --sy: 16px; --d: 0.15s; }
+.spark:nth-child(3) { --sx: 18px; --sy: 8px; --d: 0.3s; }
+.spark:nth-child(4) { --sx: -10px; --sy: 20px; --d: 0.45s; }
+.spark:nth-child(5) { --sx: 6px; --sy: 14px; --d: 0.6s; }
+
+.arm-1 .spark { animation-delay: var(--d); }
+.arm-2 .spark { animation-delay: calc(var(--d) + 2s); }
+
+@keyframes sparkBurst {
+  0%, 8%  { opacity: 0; transform: translate(0, 0) scale(1); }
+  10%     { opacity: 1; transform: translate(0, 0) scale(1); }
+  14%     { opacity: 1; transform: translate(calc(var(--sx) * 0.5), calc(var(--sy) * 0.5)) scale(0.8); }
+  18%     { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0); }
+  20%     { opacity: 0; transform: translate(0, 0) scale(1); }
+  22%     { opacity: 1; transform: translate(0, 0) scale(1); }
+  26%     { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0); }
+  28%, 100% { opacity: 0; }
+}
+
+/* --- Smoke/steam puffs (on welder arm) --- */
+.smoke-puff {
+  position: absolute;
+  top: 100%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(200, 200, 220, 0.2);
+  animation: smokePuff 12s ease-out infinite;
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.puff-1 { left: -8px; animation-delay: 0.2s; }
+.puff-2 { left: 4px; animation-delay: 0.8s; }
+
+@keyframes smokePuff {
+  0%, 10% { opacity: 0; transform: translateY(0) scale(0.5); }
+  14%     { opacity: 0.4; transform: translateY(-10px) scale(1); }
+  20%     { opacity: 0.2; transform: translateY(-30px) scale(1.8); }
+  26%     { opacity: 0; transform: translateY(-50px) scale(2.5); }
+  28%, 100% { opacity: 0; }
+}
+
+/* --- Paint mist (on painter arm) --- */
+.paint-mist {
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  width: 30px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.3), transparent);
+  filter: blur(4px);
+  animation: paintMist 12s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes paintMist {
+  0%, 52%  { opacity: 0; }
+  56%      { opacity: 0.6; }
+  64%      { opacity: 0.6; }
+  68%      { opacity: 0; }
+  100%     { opacity: 0; }
+}
+
+/* --- Scan beam (on inspector arm) --- */
+.scan-beam {
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: 12px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(6,182,212,0.5), rgba(6,182,212,0.1), transparent);
+  animation: scanBeam 12s ease-in-out infinite;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+@keyframes scanBeam {
+  0%, 58%  { opacity: 0; height: 0; }
+  61%      { opacity: 0.8; height: 60px; }
+  67%      { opacity: 0.8; height: 60px; }
+  70%      { opacity: 0; height: 0; }
+  100%     { opacity: 0; height: 0; }
+}
+
+/* Processing info */
+.processing-info {
+  text-align: center;
+  padding: 20px;
+}
+
+.processing-info h2 {
+  margin: 0 0 8px;
+  color: #e2e8f0;
+  font-size: 1.4rem;
+}
+
+.processing-subtext {
+  color: #94a3b8;
+  margin: 0 0 16px;
+}
+
+.processing-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.processing-dots .dot {
+  width: 10px;
+  height: 10px;
+  background: #4f46e5;
+  border-radius: 50%;
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.processing-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.processing-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.toggle-logs-btn {
+  background: rgba(79, 70, 229, 0.2);
+  color: #818cf8;
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.toggle-logs-btn:hover {
+  background: rgba(79, 70, 229, 0.3);
+  border-color: rgba(79, 70, 229, 0.5);
+}
+
+/* Log Viewer */
+.log-viewer {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.log-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.log-title {
+  color: #c9d1d9;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.auto-scroll-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #8b949e;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.auto-scroll-toggle input {
+  accent-color: #4f46e5;
+}
+
+.log-content {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px 0;
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 0.8rem;
+}
+
+.log-empty {
+  color: #484f58;
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+.log-entry {
+  display: flex;
+  gap: 12px;
+  padding: 3px 16px;
+  line-height: 1.5;
+}
+
+.log-entry:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.log-time {
+  color: #484f58;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.log-level {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.log-info .log-level {
+  color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.log-error .log-level {
+  color: #f85149;
+  background: rgba(248, 81, 73, 0.1);
+}
+
+.log-msg {
+  color: #c9d1d9;
+  word-break: break-word;
+}
+
+.log-error .log-msg {
+  color: #f85149;
+}
+
+/* Color picker */
+.color-picker-group {
+  margin-bottom: 16px;
+}
+
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  position: relative;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.color-swatch.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+.color-swatch-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.custom-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.custom-color-row input[type="color"] {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+}
+
+.custom-color-row span {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', monospace;
+}

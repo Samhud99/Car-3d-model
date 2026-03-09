@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { readFileSync, existsSync } from "node:fs";
-import { submitJob, getJobStatus } from "../services/openclaw.js";
+import { submitJob, getJobStatus, getJobLogs } from "../services/openclaw.js";
 
 const router = Router();
 
@@ -9,7 +9,9 @@ const CARS_JSON_PATH =
 
 interface CarModel {
   name: string;
+  years: number[];
   types: string[];
+  subtypes: string[];
 }
 
 interface CarMake {
@@ -36,7 +38,9 @@ function loadCars(): CarsData | null {
 function validateCarInput(
   make: string,
   model: string,
+  year: number,
   type: string,
+  subtype: string,
   data: CarsData
 ): string | null {
   const makeEntry = data.cars.find(
@@ -55,6 +59,10 @@ function validateCarInput(
     return `Unknown model: ${model} for make: ${make}`;
   }
 
+  if (modelEntry.years.length > 0 && !modelEntry.years.includes(year)) {
+    return `Unknown year: ${year} for ${make} ${model}`;
+  }
+
   if (
     modelEntry.types.length > 0 &&
     !modelEntry.types.some((t) => t.toLowerCase() === type.toLowerCase())
@@ -62,20 +70,35 @@ function validateCarInput(
     return `Unknown type: ${type} for ${make} ${model}`;
   }
 
+  if (
+    modelEntry.subtypes.length > 0 &&
+    !modelEntry.subtypes.some((s) => s.toLowerCase() === subtype.toLowerCase())
+  ) {
+    return `Unknown subtype: ${subtype} for ${make} ${model}`;
+  }
+
   return null;
 }
 
 router.post("/", async (req: Request, res: Response) => {
-  const { make, model, type } = req.body as {
+  const { make, model, year, type, subtype, color } = req.body as {
     make?: string;
     model?: string;
+    year?: number;
     type?: string;
+    subtype?: string;
+    color?: string;
   };
 
-  if (!make || !model || !type) {
+  if (!make || !model || !year || !type || !subtype || !color) {
     res
       .status(400)
-      .json({ error: "Missing required fields: make, model, type" });
+      .json({ error: "Missing required fields: make, model, year, type, subtype, color" });
+    return;
+  }
+
+  if (!/^#[0-9a-fA-F]{6}$/.test(color)) {
+    res.status(400).json({ error: "Invalid color format. Must be a hex color like #ff0000" });
     return;
   }
 
@@ -85,25 +108,31 @@ router.post("/", async (req: Request, res: Response) => {
     return;
   }
 
-  const validationError = validateCarInput(make, model, type, carsData);
+  const validationError = validateCarInput(make, model, year, type, subtype, carsData);
   if (validationError) {
     res.status(400).json({ error: validationError });
     return;
   }
 
-  // Pass user's credentials through to OpenClaw for the AI workload
-  const provider = req.headers["x-provider"] as string;
-  const apiKey = req.headers["x-api-key"] as string;
-
   try {
-    const result = await submitJob({ make, model, type, credentials: { provider, apiKey } });
+    const result = await submitJob({ make, model, year, type, subtype, color });
     res.status(201).json(result);
   } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "Unknown error";
-    res
-      .status(502)
-      .json({ error: "OpenClaw error", details: message });
+    console.error("Job submission error:", err);
+    res.status(502).json({ error: "Failed to submit job" });
+  }
+});
+
+router.get("/:id/logs", async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    await getJobStatus(id); // Verify job exists
+    const logs = getJobLogs(id);
+    res.json(logs);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    res.status(404).json({ error: message });
   }
 });
 
@@ -113,12 +142,8 @@ router.get("/:id", async (req: Request, res: Response) => {
   try {
     const result = await getJobStatus(id);
     res.json(result);
-  } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "Unknown error";
-    res
-      .status(502)
-      .json({ error: "OpenClaw error", details: message });
+  } catch {
+    res.status(404).json({ error: "Job not found" });
   }
 });
 

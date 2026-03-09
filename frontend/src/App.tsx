@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCredentials, setAuthFailureHandler } from "./api/client.js";
-import { ProviderPrompt } from "./components/ProviderPrompt.js";
+import { getToken, setAuthFailureHandler } from "./api/client.js";
+import { TokenPrompt } from "./components/TokenPrompt.js";
 import { CarForm } from "./components/CarForm.js";
 import { JobList } from "./components/JobList.js";
+import { ProcessingView } from "./components/ProcessingView.js";
 import { useJobs } from "./hooks/useJobs.js";
 
 export function App() {
-  const [authenticated, setAuthenticated] = useState(() => !!getCredentials());
+  const [authenticated, setAuthenticated] = useState(() => !!getToken());
   const { jobs, submitting, error, submitJob } = useJobs();
 
   useEffect(() => {
@@ -16,22 +17,23 @@ export function App() {
   }, []);
 
   if (!authenticated) {
-    return <ProviderPrompt onAuthenticated={() => setAuthenticated(true)} />;
+    return <TokenPrompt onAuthenticated={() => setAuthenticated(true)} />;
   }
 
+  const processingJob = jobs.find((j) => j.status === "processing");
+
   return (
-    <div
-      style={{
-        maxWidth: 600,
-        margin: "0 auto",
-        padding: 24,
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <CarForm onSubmit={submitJob} submitting={submitting} />
-      {error && (
-        <p style={{ color: "#ef4444", marginBottom: 16 }}>Error: {error}</p>
+    <div className="app-container">
+      <div className="app-header">
+        <h1>Car Model Generator</h1>
+        <p>Select a car and generate a 3D model</p>
+      </div>
+      {processingJob ? (
+        <ProcessingView job={processingJob} />
+      ) : (
+        <CarForm onSubmit={(make, model, year, type, subtype, color) => submitJob(make, model, year, type, subtype, color)} submitting={submitting} />
       )}
+      {error && <div className="error-msg">{error}</div>}
       <JobList jobs={jobs} />
     </div>
   );

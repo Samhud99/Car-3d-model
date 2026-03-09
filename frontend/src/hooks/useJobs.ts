@@ -33,11 +33,11 @@ export function useJobs() {
   }, []);
 
   const submitJob = useCallback(
-    async (make: string, model: string, type: string) => {
+    async (make: string, model: string, year: number, type: string, subtype: string, color: string) => {
       setSubmitting(true);
       setError(null);
       try {
-        const job = await api.submitJob(make, model, type);
+        const job = await api.submitJob(make, model, year, type, subtype, color);
         setJobs((prev) => [job, ...prev]);
         startPolling(job.id);
       } catch (err: unknown) {

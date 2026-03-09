@@ -1,65 +1,94 @@
 {
   "agents": {
     "defaults": {
+      "workspace": "/home/node/.openclaw/workspace",
       "model": {
-        "primary": "zai/glm-5",
+        "primary": "anthropic/claude-sonnet-4-20250514",
         "fallbacks": [
-          "zai/glm-4.7",
-          "zai/glm-4.6",
-          "zai/glm-4.5-air"
+          "anthropic/claude-haiku-4-20250414",
+          "zai/glm-5",
+          "zai/glm-4.7"
         ]
       },
-      "temperature": 0.6,
       "sandbox": {
-        "mode": "all",
-        "docker": {
-          "readOnlyRoot": true,
-          "network": "none",
-          "capDrop": ["ALL"],
-          "user": "1000:1000",
-          "memory": "2g",
-          "pidsLimit": 256,
-          "tmpfs": ["/tmp", "/var/tmp", "/run"]
-        },
-        "prune": {
-          "idleHours": 24,
-          "maxAgeDays": 7
-        }
-      }
+        "mode": "off"
+      },
+      "skipBootstrap": true
     }
   },
   "models": {
     "providers": {
+      "anthropic": {
+        "apiKey": "${ANTHROPIC_API_KEY}",
+        "baseUrl": "https://api.anthropic.com",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "claude-sonnet-4-20250514",
+            "name": "Claude Sonnet 4",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 3, "output": 15, "cacheRead": 0.3, "cacheWrite": 3.75 }
+          },
+          {
+            "id": "claude-haiku-4-20250414",
+            "name": "Claude Haiku 4",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.8, "output": 4, "cacheRead": 0.08, "cacheWrite": 1 }
+          }
+        ]
+      },
       "zai": {
         "apiKey": "${ZAI_API_KEY}",
-        "baseUrl": "https://open.bigmodel.cn/api/paas/v4"
-      }
-    }
-  },
-  "gateway": {
-    "bind": "loopback",
-    "port": 18789
-  },
-  "tools": {
-    "sandbox": {
-      "tools": {
-        "allow": [
-          "exec",
-          "read",
-          "write",
-          "edit",
-          "browser"
-        ],
-        "deny": [
-          "process_kill",
-          "network_raw"
+        "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "glm-5",
+            "name": "GLM-5",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          },
+          {
+            "id": "glm-4.7",
+            "name": "GLM-4.7",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          }
         ]
       }
     }
   },
+  "gateway": {
+    "bind": "lan",
+    "port": 18789,
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        },
+        "responses": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "tools": {
+    "profile": "full"
+  },
+  "skills": {
+    "load": {
+      "watch": true
+    }
+  },
   "logging": {
-    "level": "info",
-    "sessions": true,
-    "actions": true
+    "level": "info"
   }
 }

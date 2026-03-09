@@ -1,232 +1,232 @@
 {
-  "updated": "2026-03-06T00:00:00Z",
+  "updated": "2026-03-09T00:00:00Z",
   "source": "seed",
   "cars": [
     {
       "make": "Audi",
       "models": [
-        { "name": "A3", "types": ["Sedan", "Hatchback"] },
-        { "name": "A4", "types": ["Sedan", "Wagon"] },
-        { "name": "A5", "types": ["Coupe", "Convertible"] },
-        { "name": "Q3", "types": ["SUV"] },
-        { "name": "Q5", "types": ["SUV"] },
-        { "name": "Q7", "types": ["SUV"] },
-        { "name": "e-tron", "types": ["SUV", "Electric"] }
+        { "name": "A3", "types": ["Sedan", "Hatchback"], "years": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["35 TFSI", "40 TFSI Quattro", "S line", "S3"] },
+        { "name": "A4", "types": ["Sedan", "Wagon"], "years": [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["35 TFSI", "40 TFSI", "45 TFSI Quattro", "S line", "S4"] },
+        { "name": "A5", "types": ["Coupe", "Convertible"], "years": [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["40 TFSI", "45 TFSI Quattro", "S line", "S5"] },
+        { "name": "Q3", "types": ["SUV"], "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["35 TFSI", "40 TFSI Quattro", "Sportback", "S line"] },
+        { "name": "Q5", "types": ["SUV"], "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["40 TDI", "45 TFSI", "50 TDI Quattro", "S line", "SQ5"] },
+        { "name": "Q7", "types": ["SUV"], "years": [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["45 TDI", "50 TDI", "S line", "SQ7"] },
+        { "name": "e-tron", "types": ["SUV", "Electric"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["50", "55 Quattro", "S line", "S e-tron"] }
       ]
     },
     {
       "make": "BMW",
       "models": [
-        { "name": "1 Series", "types": ["Hatchback"] },
-        { "name": "3 Series", "types": ["Sedan", "Wagon"] },
-        { "name": "5 Series", "types": ["Sedan", "Wagon"] },
-        { "name": "X1", "types": ["SUV"] },
-        { "name": "X3", "types": ["SUV"] },
-        { "name": "X5", "types": ["SUV"] },
-        { "name": "iX", "types": ["SUV", "Electric"] },
-        { "name": "i4", "types": ["Sedan", "Electric"] }
+        { "name": "1 Series", "types": ["Hatchback"], "years": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["118i", "120i", "M Sport", "M135i xDrive"] },
+        { "name": "3 Series", "types": ["Sedan", "Wagon"], "years": [1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["320i", "330i", "330e", "M Sport", "M340i xDrive"] },
+        { "name": "5 Series", "types": ["Sedan", "Wagon"], "years": [1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["520i", "530i", "540i xDrive", "M Sport", "M550e xDrive"] },
+        { "name": "X1", "types": ["SUV"], "years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["sDrive18i", "sDrive20i", "xDrive25i", "M Sport"] },
+        { "name": "X3", "types": ["SUV"], "years": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["sDrive20i", "xDrive20d", "xDrive30i", "M Sport", "M40i"] },
+        { "name": "X5", "types": ["SUV"], "years": [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["xDrive30d", "xDrive40i", "xDrive45e", "M Sport", "M50i"] },
+        { "name": "iX", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["xDrive40", "xDrive50", "M Sport", "M60"] },
+        { "name": "i4", "types": ["Sedan", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["eDrive35", "eDrive40", "M Sport", "M50"] }
       ]
     },
     {
       "make": "BYD",
       "models": [
-        { "name": "Atto 3", "types": ["SUV", "Electric"] },
-        { "name": "Dolphin", "types": ["Hatchback", "Electric"] },
-        { "name": "Seal", "types": ["Sedan", "Electric"] },
-        { "name": "Shark", "types": ["Ute", "Hybrid"] }
+        { "name": "Atto 3", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["Standard Range", "Extended Range"] },
+        { "name": "Dolphin", "types": ["Hatchback", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["Standard", "Premium"] },
+        { "name": "Seal", "types": ["Sedan", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["Dynamic", "Premium", "Performance"] },
+        { "name": "Shark", "types": ["Ute", "Hybrid"], "years": [2025, 2026], "subtypes": ["Premium", "Flagship"] }
       ]
     },
     {
       "make": "Ford",
       "models": [
-        { "name": "Ranger", "types": ["Ute", "4x4"] },
-        { "name": "Everest", "types": ["SUV", "4x4"] },
-        { "name": "Puma", "types": ["SUV"] },
-        { "name": "Mustang", "types": ["Coupe", "Convertible"] },
-        { "name": "Mustang Mach-E", "types": ["SUV", "Electric"] },
-        { "name": "Transit", "types": ["Van"] }
+        { "name": "Ranger", "types": ["Ute", "4x4"], "years": [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["XL", "XLS", "XLT", "Sport", "Wildtrak", "Raptor"] },
+        { "name": "Everest", "types": ["SUV", "4x4"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Ambiente", "Trend", "Sport", "Titanium", "Platinum"] },
+        { "name": "Puma", "types": ["SUV"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Puma", "ST-Line", "ST-Line V"] },
+        { "name": "Mustang", "types": ["Coupe", "Convertible"], "years": [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["EcoBoost", "GT", "Dark Horse"] },
+        { "name": "Mustang Mach-E", "types": ["SUV", "Electric"], "years": [2024, 2025, 2026], "subtypes": ["Select", "Premium", "GT"] },
+        { "name": "Transit", "types": ["Van"], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Custom", "Custom Sport", "Custom Trail"] }
       ]
     },
     {
       "make": "GWM",
       "models": [
-        { "name": "Ute Cannon", "types": ["Ute", "4x4"] },
-        { "name": "Haval H6", "types": ["SUV"] },
-        { "name": "Haval Jolion", "types": ["SUV"] },
-        { "name": "Ora", "types": ["Hatchback", "Electric"] },
-        { "name": "Tank 300", "types": ["SUV", "4x4"] }
+        { "name": "Ute Cannon", "types": ["Ute", "4x4"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Cannon", "Cannon-L", "Cannon-X", "Cannon Alpha"] },
+        { "name": "Haval H6", "types": ["SUV"], "years": [2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Lux", "Ultra", "GT"] },
+        { "name": "Haval Jolion", "types": ["SUV"], "years": [2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Lux", "Ultra", "Vanta"] },
+        { "name": "Ora", "types": ["Hatchback", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["Standard Range", "Extended Range", "GT"] },
+        { "name": "Tank 300", "types": ["SUV", "4x4"], "years": [2024, 2025, 2026], "subtypes": ["Lux", "Ultra"] }
       ]
     },
     {
       "make": "Honda",
       "models": [
-        { "name": "Civic", "types": ["Sedan", "Hatchback"] },
-        { "name": "Accord", "types": ["Sedan", "Hybrid"] },
-        { "name": "CR-V", "types": ["SUV", "Hybrid"] },
-        { "name": "HR-V", "types": ["SUV"] },
-        { "name": "ZR-V", "types": ["SUV"] },
-        { "name": "Jazz", "types": ["Hatchback", "Hybrid"] }
+        { "name": "Civic", "types": ["Sedan", "Hatchback"], "years": [1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["VTi", "VTi-S", "VTi LX", "RS", "Type R"] },
+        { "name": "Accord", "types": ["Sedan", "Hybrid"], "years": [1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["VTi LX", "VTi LX Hybrid"] },
+        { "name": "CR-V", "types": ["SUV", "Hybrid"], "years": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["VTi", "VTi 7", "VTi X", "VTi LX AWD", "e:HEV"] },
+        { "name": "HR-V", "types": ["SUV"], "years": [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Vi X", "e:HEV L", "e:HEV LX"] },
+        { "name": "ZR-V", "types": ["SUV"], "years": [2024, 2025, 2026], "subtypes": ["VTi X", "VTi LX", "e:HEV LX"] },
+        { "name": "Jazz", "types": ["Hatchback", "Hybrid"], "years": [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Vi", "VTi", "VTi LX", "e:HEV LX"] }
       ]
     },
     {
       "make": "Hyundai",
       "models": [
-        { "name": "i30", "types": ["Hatchback", "Sedan"] },
-        { "name": "Tucson", "types": ["SUV", "Hybrid"] },
-        { "name": "Santa Fe", "types": ["SUV", "Hybrid"] },
-        { "name": "Kona", "types": ["SUV", "Electric"] },
-        { "name": "Ioniq 5", "types": ["SUV", "Electric"] },
-        { "name": "Ioniq 6", "types": ["Sedan", "Electric"] },
-        { "name": "Staria", "types": ["People Mover", "Van"] },
-        { "name": "iLoad", "types": ["Van"] }
+        { "name": "i30", "types": ["Hatchback", "Sedan"], "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["i30", "Active", "Elite", "N Line", "N Line Premium", "N"] },
+        { "name": "Tucson", "types": ["SUV", "Hybrid"], "years": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Tucson", "Elite", "Highlander", "N Line", "Hybrid Elite"] },
+        { "name": "Santa Fe", "types": ["SUV", "Hybrid"], "years": [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Santa Fe", "Elite", "Calligraphy", "Hybrid", "Hybrid Calligraphy"] },
+        { "name": "Kona", "types": ["SUV", "Electric"], "years": [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Kona", "Elite", "Highlander", "N Line", "Electric"] },
+        { "name": "Ioniq 5", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["Dynamiq", "Techniq", "Epiq", "N"] },
+        { "name": "Ioniq 6", "types": ["Sedan", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["Dynamiq", "Techniq", "Epiq"] },
+        { "name": "Staria", "types": ["People Mover", "Van"], "years": [2021, 2022, 2023, 2024, 2025], "subtypes": ["Staria", "Elite", "Highlander", "Load"] },
+        { "name": "iLoad", "types": ["Van"], "years": [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024], "subtypes": ["Crew Cab", "3-Seater"] }
       ]
     },
     {
       "make": "Isuzu",
       "models": [
-        { "name": "D-Max", "types": ["Ute", "4x4"] },
-        { "name": "MU-X", "types": ["SUV", "4x4"] }
+        { "name": "D-Max", "types": ["Ute", "4x4"], "years": [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["SX", "LS-M", "LS-U", "LS-U+", "X-Terrain"] },
+        { "name": "MU-X", "types": ["SUV", "4x4"], "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["LS-M", "LS-U", "LS-U+", "LS-T"] }
       ]
     },
     {
       "make": "Jeep",
       "models": [
-        { "name": "Wrangler", "types": ["SUV", "4x4", "Convertible"] },
-        { "name": "Grand Cherokee", "types": ["SUV", "4x4"] },
-        { "name": "Compass", "types": ["SUV"] },
-        { "name": "Gladiator", "types": ["Ute", "4x4"] },
-        { "name": "Avenger", "types": ["SUV", "Electric"] }
+        { "name": "Wrangler", "types": ["SUV", "4x4", "Convertible"], "years": [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Sport S", "Overland", "Rubicon", "Willys"] },
+        { "name": "Grand Cherokee", "types": ["SUV", "4x4"], "years": [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Laredo", "Night Eagle", "Limited", "Overland", "Summit Reserve", "4xe"] },
+        { "name": "Compass", "types": ["SUV"], "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Launch Edition", "Limited", "S-Limited", "Trailhawk"] },
+        { "name": "Gladiator", "types": ["Ute", "4x4"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Sport S", "Overland", "Rubicon", "Mojave"] },
+        { "name": "Avenger", "types": ["SUV", "Electric"], "years": [2025, 2026], "subtypes": ["Longitude", "Summit"] }
       ]
     },
     {
       "make": "Kia",
       "models": [
-        { "name": "Cerato", "types": ["Sedan", "Hatchback"] },
-        { "name": "Sportage", "types": ["SUV", "Hybrid"] },
-        { "name": "Sorento", "types": ["SUV", "Hybrid"] },
-        { "name": "Seltos", "types": ["SUV"] },
-        { "name": "EV6", "types": ["SUV", "Electric"] },
-        { "name": "EV9", "types": ["SUV", "Electric"] },
-        { "name": "Carnival", "types": ["People Mover"] },
-        { "name": "Stonic", "types": ["SUV"] }
+        { "name": "Cerato", "types": ["Sedan", "Hatchback"], "years": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "Sport", "Sport+", "GT"] },
+        { "name": "Sportage", "types": ["SUV", "Hybrid"], "years": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "SX", "SX+", "GT-Line", "GT-Line Hybrid"] },
+        { "name": "Sorento", "types": ["SUV", "Hybrid"], "years": [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "Sport", "Sport+", "GT-Line", "GT-Line HEV"] },
+        { "name": "Seltos", "types": ["SUV"], "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "Sport", "Sport+", "GT-Line"] },
+        { "name": "EV6", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["Air", "Earth", "GT-Line", "GT"] },
+        { "name": "EV9", "types": ["SUV", "Electric"], "years": [2024, 2025, 2026], "subtypes": ["Air", "Earth", "GT-Line"] },
+        { "name": "Carnival", "types": ["People Mover"], "years": [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "SLi", "Platinum"] },
+        { "name": "Stonic", "types": ["SUV"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "Sport", "GT-Line"] }
       ]
     },
     {
       "make": "Land Rover",
       "models": [
-        { "name": "Defender", "types": ["SUV", "4x4"] },
-        { "name": "Discovery", "types": ["SUV", "4x4"] },
-        { "name": "Discovery Sport", "types": ["SUV"] },
-        { "name": "Range Rover", "types": ["SUV", "4x4"] },
-        { "name": "Range Rover Sport", "types": ["SUV", "4x4"] },
-        { "name": "Range Rover Evoque", "types": ["SUV"] }
+        { "name": "Defender", "types": ["SUV", "4x4"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["90", "110", "130", "S", "X-Dynamic", "V8"] },
+        { "name": "Discovery", "types": ["SUV", "4x4"], "years": [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "R-Dynamic SE", "R-Dynamic HSE", "Metropolitan Edition"] },
+        { "name": "Discovery Sport", "types": ["SUV"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["S", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE"] },
+        { "name": "Range Rover", "types": ["SUV", "4x4"], "years": [1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["SE", "HSE", "Autobiography", "SV", "First Edition"] },
+        { "name": "Range Rover Sport", "types": ["SUV", "4x4"], "years": [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["SE", "Dynamic SE", "Dynamic HSE", "Autobiography", "SV Edition One"] },
+        { "name": "Range Rover Evoque", "types": ["SUV"], "years": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["S", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE", "Autobiography"] }
       ]
     },
     {
       "make": "Mazda",
       "models": [
-        { "name": "Mazda2", "types": ["Hatchback"] },
-        { "name": "Mazda3", "types": ["Sedan", "Hatchback"] },
-        { "name": "CX-3", "types": ["SUV"] },
-        { "name": "CX-5", "types": ["SUV"] },
-        { "name": "CX-8", "types": ["SUV"] },
-        { "name": "CX-9", "types": ["SUV"] },
-        { "name": "BT-50", "types": ["Ute", "4x4"] },
-        { "name": "MX-5", "types": ["Convertible", "Coupe"] }
+        { "name": "Mazda2", "types": ["Hatchback"], "years": [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["G15 Pure", "G15 Evolve", "G15 GT"] },
+        { "name": "Mazda3", "types": ["Sedan", "Hatchback"], "years": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["G20 Pure", "G20 Evolve", "G20 Touring", "G25 GT", "G25 Astina"] },
+        { "name": "CX-3", "types": ["SUV"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Neo Sport", "Maxx Sport", "sTouring", "Akari"] },
+        { "name": "CX-5", "types": ["SUV"], "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Maxx", "Maxx Sport", "Touring", "GT SP", "Akera"] },
+        { "name": "CX-8", "types": ["SUV"], "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024], "subtypes": ["Sport", "Touring", "GT", "Asaki"] },
+        { "name": "CX-9", "types": ["SUV"], "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023], "subtypes": ["Sport", "Touring", "GT", "Azami"] },
+        { "name": "BT-50", "types": ["Ute", "4x4"], "years": [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["XT", "XTR", "GT", "SP", "Thunder"] },
+        { "name": "MX-5", "types": ["Convertible", "Coupe"], "years": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Roadster", "Roadster GT", "RF", "RF GT"] }
       ]
     },
     {
       "make": "Mercedes-Benz",
       "models": [
-        { "name": "A-Class", "types": ["Hatchback", "Sedan"] },
-        { "name": "C-Class", "types": ["Sedan", "Wagon", "Coupe"] },
-        { "name": "E-Class", "types": ["Sedan", "Wagon", "Coupe"] },
-        { "name": "GLA", "types": ["SUV"] },
-        { "name": "GLC", "types": ["SUV", "Coupe"] },
-        { "name": "GLE", "types": ["SUV"] },
-        { "name": "EQA", "types": ["SUV", "Electric"] },
-        { "name": "EQB", "types": ["SUV", "Electric"] }
+        { "name": "A-Class", "types": ["Hatchback", "Sedan"], "years": [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["A 180", "A 200", "A 250", "A 250 4MATIC", "AMG A 35"] },
+        { "name": "C-Class", "types": ["Sedan", "Wagon", "Coupe"], "years": [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["C 200", "C 300", "C 300 4MATIC", "AMG C 43", "AMG C 63 S E Performance"] },
+        { "name": "E-Class", "types": ["Sedan", "Wagon", "Coupe"], "years": [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["E 200", "E 300", "E 450 4MATIC", "AMG E 53 Hybrid"] },
+        { "name": "GLA", "types": ["SUV"], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GLA 200", "GLA 250 4MATIC", "AMG GLA 35", "AMG GLA 45 S"] },
+        { "name": "GLC", "types": ["SUV", "Coupe"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GLC 200", "GLC 300 4MATIC", "GLC 300e", "AMG GLC 43", "AMG GLC 63 S E Performance"] },
+        { "name": "GLE", "types": ["SUV"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GLE 300 d", "GLE 450", "GLE 450d", "AMG GLE 53", "AMG GLE 63 S"] },
+        { "name": "EQA", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["EQA 250", "EQA 250+", "EQA 350 4MATIC"] },
+        { "name": "EQB", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["EQB 250+", "EQB 350 4MATIC"] }
       ]
     },
     {
       "make": "MG",
       "models": [
-        { "name": "MG3", "types": ["Hatchback", "Hybrid"] },
-        { "name": "ZS", "types": ["SUV"] },
-        { "name": "ZS EV", "types": ["SUV", "Electric"] },
-        { "name": "HS", "types": ["SUV"] },
-        { "name": "MG4", "types": ["Hatchback", "Electric"] }
+        { "name": "MG3", "types": ["Hatchback", "Hybrid"], "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Excite", "Essence"] },
+        { "name": "ZS", "types": ["SUV"], "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Excite", "Essence"] },
+        { "name": "ZS EV", "types": ["SUV", "Electric"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Excite", "Essence", "Long Range Essence"] },
+        { "name": "HS", "types": ["SUV"], "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Excite", "Essence", "Essence X"] },
+        { "name": "MG4", "types": ["Hatchback", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["Excite 51", "Excite 64", "Essence 64", "XPower"] }
       ]
     },
     {
       "make": "Mitsubishi",
       "models": [
-        { "name": "Triton", "types": ["Ute", "4x4"] },
-        { "name": "Outlander", "types": ["SUV", "Hybrid"] },
-        { "name": "ASX", "types": ["SUV"] },
-        { "name": "Pajero Sport", "types": ["SUV", "4x4"] },
-        { "name": "Eclipse Cross", "types": ["SUV", "Hybrid"] },
-        { "name": "Express", "types": ["Van"] }
+        { "name": "Triton", "types": ["Ute", "4x4"], "years": [1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GLX", "GLX+", "GLS", "GSR", "Exceed"] },
+        { "name": "Outlander", "types": ["SUV", "Hybrid"], "years": [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["ES", "LS", "Aspire", "Exceed", "Exceed Tourer", "PHEV GSR", "PHEV Exceed"] },
+        { "name": "ASX", "types": ["SUV"], "years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["ES", "LS", "Aspire", "Exceed"] },
+        { "name": "Pajero Sport", "types": ["SUV", "4x4"], "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["GLX", "GLS", "GSR", "Exceed"] },
+        { "name": "Eclipse Cross", "types": ["SUV", "Hybrid"], "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["ES", "LS", "Aspire", "Exceed", "PHEV ES", "PHEV Exceed"] },
+        { "name": "Express", "types": ["Van"], "years": [2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["SWB", "LWB"] }
       ]
     },
     {
       "make": "Nissan",
       "models": [
-        { "name": "X-Trail", "types": ["SUV"] },
-        { "name": "Qashqai", "types": ["SUV"] },
-        { "name": "Navara", "types": ["Ute", "4x4"] },
-        { "name": "Patrol", "types": ["SUV", "4x4"] },
-        { "name": "Juke", "types": ["SUV"] },
-        { "name": "Leaf", "types": ["Hatchback", "Electric"] }
+        { "name": "X-Trail", "types": ["SUV"], "years": [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["ST", "ST-L", "Ti", "Ti-L", "e-Power ST-L", "e-Power Ti-L"] },
+        { "name": "Qashqai", "types": ["SUV"], "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["ST", "ST+", "ST-L", "Ti", "e-Power ST-L", "e-Power Ti"] },
+        { "name": "Navara", "types": ["Ute", "4x4"], "years": [1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["SL", "ST", "ST-X", "PRO-4X", "PRO-4X Warrior"] },
+        { "name": "Patrol", "types": ["SUV", "4x4"], "years": [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Ti", "Ti-L"] },
+        { "name": "Juke", "types": ["SUV"], "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["ST", "ST-L", "ST-L+", "Ti"] },
+        { "name": "Leaf", "types": ["Hatchback", "Electric"], "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024], "subtypes": ["Leaf", "e+"] }
       ]
     },
     {
       "make": "Subaru",
       "models": [
-        { "name": "Forester", "types": ["SUV"] },
-        { "name": "Outback", "types": ["Wagon", "SUV"] },
-        { "name": "XV", "types": ["SUV"] },
-        { "name": "Impreza", "types": ["Hatchback", "Sedan"] },
-        { "name": "WRX", "types": ["Sedan"] },
-        { "name": "BRZ", "types": ["Coupe"] },
-        { "name": "Solterra", "types": ["SUV", "Electric"] }
+        { "name": "Forester", "types": ["SUV"], "years": [1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["2.5i", "2.5i-L", "2.5i-S", "2.5i Sport", "S Sport", "Hybrid S", "Hybrid L"] },
+        { "name": "Outback", "types": ["Wagon", "SUV"], "years": [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["AWD", "AWD Sport", "AWD Touring", "AWD XT"] },
+        { "name": "XV", "types": ["SUV"], "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["2.0i", "2.0i-L", "2.0i-S", "Hybrid S"] },
+        { "name": "Impreza", "types": ["Hatchback", "Sedan"], "years": [1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["2.0i", "2.0i-L", "2.0i-S", "RS"] },
+        { "name": "WRX", "types": ["Sedan"], "years": [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Manual", "CVT", "tS"] },
+        { "name": "BRZ", "types": ["Coupe"], "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Coupe", "Coupe S"] },
+        { "name": "Solterra", "types": ["SUV", "Electric"], "years": [2023, 2024, 2025, 2026], "subtypes": ["AWD", "AWD Touring"] }
       ]
     },
     {
       "make": "Tesla",
       "models": [
-        { "name": "Model 3", "types": ["Sedan", "Electric"] },
-        { "name": "Model Y", "types": ["SUV", "Electric"] },
-        { "name": "Model S", "types": ["Sedan", "Electric"] },
-        { "name": "Model X", "types": ["SUV", "Electric"] },
-        { "name": "Cybertruck", "types": ["Ute", "Electric"] }
+        { "name": "Model 3", "types": ["Sedan", "Electric"], "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Standard Range", "Long Range", "Performance"] },
+        { "name": "Model Y", "types": ["SUV", "Electric"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["Rear-Wheel Drive", "Long Range", "Performance"] },
+        { "name": "Model S", "types": ["Sedan", "Electric"], "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Dual Motor", "Plaid"] },
+        { "name": "Model X", "types": ["SUV", "Electric"], "years": [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Dual Motor", "Plaid"] },
+        { "name": "Cybertruck", "types": ["Ute", "Electric"], "years": [2025, 2026], "subtypes": ["Rear-Wheel Drive", "All-Wheel Drive", "Cyberbeast"] }
       ]
     },
     {
       "make": "Toyota",
       "models": [
-        { "name": "Camry", "types": ["Sedan", "Hybrid"] },
-        { "name": "Corolla", "types": ["Sedan", "Hatchback", "Hybrid"] },
-        { "name": "RAV4", "types": ["SUV", "Hybrid"] },
-        { "name": "HiLux", "types": ["Ute", "4x4"] },
-        { "name": "LandCruiser", "types": ["SUV", "4x4"] },
-        { "name": "Kluger", "types": ["SUV", "Hybrid"] },
-        { "name": "Yaris", "types": ["Hatchback"] },
-        { "name": "Yaris Cross", "types": ["SUV", "Hybrid"] },
-        { "name": "C-HR", "types": ["SUV", "Hybrid"] },
-        { "name": "HiAce", "types": ["Van"] }
+        { "name": "Camry", "types": ["Sedan", "Hybrid"], "years": [1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Ascent", "Ascent Sport", "SL", "SX", "Hybrid Ascent"] },
+        { "name": "Corolla", "types": ["Sedan", "Hatchback", "Hybrid"], "years": [1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Ascent Sport", "SX", "ZR", "Hybrid", "GR Sport"] },
+        { "name": "RAV4", "types": ["SUV", "Hybrid"], "years": [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GX", "GXL", "XSE", "Cruiser", "Edge", "GX Hybrid"] },
+        { "name": "HiLux", "types": ["Ute", "4x4"], "years": [1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["WorkMate", "SR", "SR5", "Rogue", "GR Sport"] },
+        { "name": "LandCruiser", "types": ["SUV", "4x4"], "years": [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GX", "GXL", "VX", "Sahara", "GR Sport"] },
+        { "name": "Kluger", "types": ["SUV", "Hybrid"], "years": [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["GX", "GXL", "Grande", "Hybrid GXL", "Hybrid Grande"] },
+        { "name": "Yaris", "types": ["Hatchback"], "years": [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "subtypes": ["Ascent Sport", "SX", "ZR"] },
+        { "name": "Yaris Cross", "types": ["SUV", "Hybrid"], "years": [2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["GX", "GXL", "Urban", "GR Sport", "Hybrid GXL"] },
+        { "name": "C-HR", "types": ["SUV", "Hybrid"], "years": [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Standard", "GR Sport", "Koba", "Koba Hybrid"] },
+        { "name": "HiAce", "types": ["Van"], "years": [1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["LWB", "SLWB", "Commuter GL", "Commuter GLX"] }
       ]
     },
     {
       "make": "Volkswagen",
       "models": [
-        { "name": "Golf", "types": ["Hatchback", "Wagon"] },
-        { "name": "Tiguan", "types": ["SUV"] },
-        { "name": "T-Roc", "types": ["SUV"] },
-        { "name": "T-Cross", "types": ["SUV"] },
-        { "name": "Amarok", "types": ["Ute", "4x4"] },
-        { "name": "ID.4", "types": ["SUV", "Electric"] },
-        { "name": "Multivan", "types": ["People Mover", "Van"] }
+        { "name": "Golf", "types": ["Hatchback", "Wagon"], "years": [1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Golf", "Life", "R-Line", "GTI", "R"] },
+        { "name": "Tiguan", "types": ["SUV"], "years": [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Tiguan", "Life", "Elegance", "R-Line", "R"] },
+        { "name": "T-Roc", "types": ["SUV"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["110TSI Style", "140TSI Sport", "R-Line"] },
+        { "name": "T-Cross", "types": ["SUV"], "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["85TSI Life", "85TSI Style"] },
+        { "name": "Amarok", "types": ["Ute", "4x4"], "years": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "subtypes": ["Amarok", "Life", "Style", "PanAmericana", "Aventura"] },
+        { "name": "ID.4", "types": ["SUV", "Electric"], "years": [2024, 2025, 2026], "subtypes": ["Pure", "Pro", "Pro Performance", "GTX"] },
+        { "name": "Multivan", "types": ["People Mover", "Van"], "years": [2022, 2023, 2024, 2025, 2026], "subtypes": ["Life", "Style", "Energised"] }
       ]
     }
   ]

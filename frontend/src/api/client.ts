@@ -1,27 +1,19 @@
-import type { CarsData, Credentials, Job } from "../types.js";
+import type { CarsData, Job } from "../types.js";
 
-const PROVIDER_KEY = "car-model-provider";
-const API_KEY = "car-model-apikey";
+const TOKEN_KEY = "car-model-token";
 
 let authFailureHandler: (() => void) | null = null;
 
-export function getCredentials(): Credentials | null {
-  const provider = localStorage.getItem(PROVIDER_KEY);
-  const apiKey = localStorage.getItem(API_KEY);
-  if (provider && apiKey) {
-    return { provider, apiKey };
-  }
-  return null;
+export function getToken(): string | null {
+  return sessionStorage.getItem(TOKEN_KEY);
 }
 
-export function setCredentials(provider: string, apiKey: string): void {
-  localStorage.setItem(PROVIDER_KEY, provider);
-  localStorage.setItem(API_KEY, apiKey);
+export function setToken(token: string): void {
+  sessionStorage.setItem(TOKEN_KEY, token);
 }
 
-export function clearCredentials(): void {
-  localStorage.removeItem(PROVIDER_KEY);
-  localStorage.removeItem(API_KEY);
+export function clearToken(): void {
+  sessionStorage.removeItem(TOKEN_KEY);
 }
 
 export function setAuthFailureHandler(handler: () => void): void {
@@ -29,14 +21,13 @@ export function setAuthFailureHandler(handler: () => void): void {
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const credentials = getCredentials();
+  const token = getToken();
   const headers: Record<string, string> = {
     ...(options.headers as Record<string, string>),
   };
 
-  if (credentials) {
-    headers["X-Provider"] = credentials.provider;
-    headers["X-Api-Key"] = credentials.apiKey;
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
   }
 
   if (options.body) {
@@ -46,7 +37,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(path, { ...options, headers });
 
   if (response.status === 401) {
-    clearCredentials();
+    clearToken();
     if (authFailureHandler) {
       authFailureHandler();
     }
@@ -74,14 +65,18 @@ export const api = {
     return request<CarsData>("/api/cars");
   },
 
-  submitJob(make: string, model: string, type: string): Promise<Job> {
+  submitJob(make: string, model: string, year: number, type: string, subtype: string, color: string): Promise<Job> {
     return request<Job>("/api/jobs", {
       method: "POST",
-      body: JSON.stringify({ make, model, type }),
+      body: JSON.stringify({ make, model, year, type, subtype, color }),
     });
   },
 
   getJobStatus(id: string): Promise<Job> {
     return request<Job>(`/api/jobs/${id}`);
+  },
+
+  getJobLogs(id: string): Promise<Array<{ timestamp: string; message: string; level: string }>> {
+    return request<Array<{ timestamp: string; message: string; level: string }>>(`/api/jobs/${id}/logs`);
   },
 };
