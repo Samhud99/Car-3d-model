@@ -184,9 +184,6 @@ services:
       - NODE_ENV=production
       - CARS_JSON_PATH=/workspace/output/cars.json
 
-    secrets:
-      - frontend_token
-
     networks:
       - openclaw-internal
       - frontend-bridge
@@ -247,8 +244,6 @@ services:
 secrets:
   zai_api_key:
     file: ./secrets/zai_api_key.txt               # chmod 0400 this file
-  frontend_token:
-    file: ./secrets/frontend_token.txt
 
 # ----------------------------------------------------------
 # Named Volumes

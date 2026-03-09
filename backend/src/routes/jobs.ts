@@ -91,8 +91,12 @@ router.post("/", async (req: Request, res: Response) => {
     return;
   }
 
+  // Pass user's credentials through to OpenClaw for the AI workload
+  const provider = req.headers["x-provider"] as string;
+  const apiKey = req.headers["x-api-key"] as string;
+
   try {
-    const result = await submitJob({ make, model, type });
+    const result = await submitJob({ make, model, type, credentials: { provider, apiKey } });
     res.status(201).json(result);
   } catch (err) {
     const message =

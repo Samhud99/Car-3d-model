@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getToken, setAuthFailureHandler } from "./api/client.js";
-import { TokenPrompt } from "./components/TokenPrompt.js";
+import { getCredentials, setAuthFailureHandler } from "./api/client.js";
+import { ProviderPrompt } from "./components/ProviderPrompt.js";
 import { CarForm } from "./components/CarForm.js";
 import { JobList } from "./components/JobList.js";
 import { useJobs } from "./hooks/useJobs.js";
 
 export function App() {
-  const [authenticated, setAuthenticated] = useState(() => !!getToken());
+  const [authenticated, setAuthenticated] = useState(() => !!getCredentials());
   const { jobs, submitting, error, submitJob } = useJobs();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function App() {
   }, []);
 
   if (!authenticated) {
-    return <TokenPrompt onAuthenticated={() => setAuthenticated(true)} />;
+    return <ProviderPrompt onAuthenticated={() => setAuthenticated(true)} />;
   }
 
   return (

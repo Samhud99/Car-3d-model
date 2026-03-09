@@ -1,63 +1,102 @@
 import { Request, Response, NextFunction } from "express";
-import { readFileSync } from "node:fs";
-import { timingSafeEqual } from "node:crypto";
+import { createHash } from "node:crypto";
 
-let cachedToken: string | null = null;
+// Cache validated keys for 10 minutes to avoid hitting provider APIs on every request
+const validatedKeys = new Map<string, number>();
+const CACHE_TTL_MS = 10 * 60 * 1000;
 
-function getToken(): string | null {
-  if (cachedToken !== null) return cachedToken;
-
-  // Try Docker secret first
-  try {
-    cachedToken = readFileSync("/run/secrets/frontend_token", "utf-8").trim();
-    return cachedToken;
-  } catch {
-    // Fall through to env var
-  }
-
-  // Fallback to environment variable
-  const envToken = process.env.FRONTEND_TOKEN;
-  if (envToken) {
-    cachedToken = envToken;
-    return cachedToken;
-  }
-
-  return null;
+function hashKey(provider: string, apiKey: string): string {
+  return createHash("sha256").update(`${provider}:${apiKey}`).digest("hex");
 }
 
-export function authMiddleware(
+function isCached(provider: string, apiKey: string): boolean {
+  const hash = hashKey(provider, apiKey);
+  const timestamp = validatedKeys.get(hash);
+  if (timestamp && Date.now() - timestamp < CACHE_TTL_MS) {
+    return true;
+  }
+  if (timestamp) {
+    validatedKeys.delete(hash);
+  }
+  return false;
+}
+
+function cacheKey(provider: string, apiKey: string): void {
+  validatedKeys.set(hashKey(provider, apiKey), Date.now());
+}
+
+async function validateKey(provider: string, apiKey: string): Promise<boolean> {
+  try {
+    switch (provider) {
+      case "zai": {
+        const res = await fetch("https://open.bigmodel.cn/api/paas/v4/models", {
+          headers: { Authorization: `Bearer ${apiKey}` },
+        });
+        return res.status !== 401 && res.status !== 403;
+      }
+      case "openai": {
+        const res = await fetch("https://api.openai.com/v1/models", {
+          headers: { Authorization: `Bearer ${apiKey}` },
+        });
+        return res.status !== 401 && res.status !== 403;
+      }
+      case "anthropic": {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "x-api-key": apiKey,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "claude-3-haiku-20240307",
+            max_tokens: 1,
+            messages: [{ role: "user", content: "hi" }],
+          }),
+        });
+        // A valid key will get a non-401 response (possibly 400 or 200)
+        return res.status !== 401 && res.status !== 403;
+      }
+      default:
+        return false;
+    }
+  } catch {
+    // Network error — cannot validate, reject
+    return false;
+  }
+}
+
+export async function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
-): void {
-  const token = getToken();
+): Promise<void> {
+  const provider = req.headers["x-provider"] as string | undefined;
+  const apiKey = req.headers["x-api-key"] as string | undefined;
 
-  if (!token) {
-    res.status(500).json({ error: "No authentication token configured" });
+  if (!provider || !apiKey) {
+    res.status(401).json({ error: "Missing X-Provider or X-Api-Key headers" });
     return;
   }
 
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    res
-      .status(401)
-      .json({ error: "Missing or invalid Authorization header" });
+  if (!["zai", "openai", "anthropic"].includes(provider)) {
+    res.status(401).json({ error: `Unsupported provider: ${provider}` });
     return;
   }
 
-  const provided = authHeader.slice(7);
-
-  // Use timing-safe comparison to prevent timing attacks
-  const tokenBuf = Buffer.from(token, "utf-8");
-  const providedBuf = Buffer.from(provided, "utf-8");
-
-  if (
-    tokenBuf.length !== providedBuf.length ||
-    !timingSafeEqual(tokenBuf, providedBuf)
-  ) {
-    res.status(401).json({ error: "Invalid token" });
+  // Check cache first
+  if (isCached(provider, apiKey)) {
+    next();
     return;
   }
 
+  // Validate against provider
+  const valid = await validateKey(provider, apiKey);
+  if (!valid) {
+    res.status(401).json({ error: `Invalid API key for ${provider}` });
+    return;
+  }
+
+  cacheKey(provider, apiKey);
   next();
 }

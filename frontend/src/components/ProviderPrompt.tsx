@@ -1,22 +1,29 @@
 import { useState } from "react";
-import { setToken } from "../api/client.js";
+import { setCredentials } from "../api/client.js";
 
-interface TokenPromptProps {
+interface ProviderPromptProps {
   onAuthenticated: () => void;
 }
 
-export function TokenPrompt({ onAuthenticated }: TokenPromptProps) {
-  const [value, setValue] = useState("");
+const PROVIDERS = [
+  { value: "zai", label: "Z.ai (GLM-5)" },
+  { value: "openai", label: "OpenAI" },
+  { value: "anthropic", label: "Anthropic" },
+];
+
+export function ProviderPrompt({ onAuthenticated }: ProviderPromptProps) {
+  const [provider, setProvider] = useState(PROVIDERS[0].value);
+  const [apiKey, setApiKey] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const trimmed = value.trim();
-    if (!trimmed) {
-      setError("Token is required");
+    const trimmedKey = apiKey.trim();
+    if (!trimmedKey) {
+      setError("API key is required");
       return;
     }
-    setToken(trimmed);
+    setCredentials(provider, trimmedKey);
     onAuthenticated();
   };
 
@@ -41,15 +48,35 @@ export function TokenPrompt({ onAuthenticated }: TokenPromptProps) {
         }}
       >
         <h2 style={{ marginTop: 0 }}>Car Model Skill</h2>
-        <p>Enter your access token to continue.</p>
-        <input
-          type="password"
-          value={value}
+        <p>Select your AI provider and enter your API key.</p>
+        <select
+          value={provider}
           onChange={(e) => {
-            setValue(e.target.value);
+            setProvider(e.target.value);
             setError(null);
           }}
-          placeholder="Access token"
+          style={{
+            width: "100%",
+            padding: 8,
+            fontSize: 14,
+            boxSizing: "border-box",
+            marginBottom: 12,
+          }}
+        >
+          {PROVIDERS.map((p) => (
+            <option key={p.value} value={p.value}>
+              {p.label}
+            </option>
+          ))}
+        </select>
+        <input
+          type="password"
+          value={apiKey}
+          onChange={(e) => {
+            setApiKey(e.target.value);
+            setError(null);
+          }}
+          placeholder="API key"
           style={{
             width: "100%",
             padding: 8,
@@ -69,7 +96,7 @@ export function TokenPrompt({ onAuthenticated }: TokenPromptProps) {
             cursor: "pointer",
           }}
         >
-          Authenticate
+          Connect
         </button>
       </form>
     </div>

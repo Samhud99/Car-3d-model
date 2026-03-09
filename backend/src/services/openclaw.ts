@@ -1,10 +1,16 @@
 const BASE_URL =
   process.env.OPENCLAW_URL || "http://openclaw-gateway:18789";
 
+interface UserCredentials {
+  provider: string;
+  apiKey: string;
+}
+
 interface SubmitJobInput {
   make: string;
   model: string;
   type: string;
+  credentials: UserCredentials;
 }
 
 interface SubmitJobResponse {
@@ -31,6 +37,9 @@ export async function submitJob(
         model: input.model,
         type: input.type,
       },
+      // Pass user's credentials so OpenClaw uses their key for the AI workload
+      provider: input.credentials.provider,
+      apiKey: input.credentials.apiKey,
     }),
   });
 

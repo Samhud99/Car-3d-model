@@ -21,7 +21,7 @@ echo -e "${NC}"
 # ============================================================
 # 1. Pre-flight checks
 # ============================================================
-echo -e "${YELLOW}[1/9] Checking prerequisites...${NC}"
+echo -e "${YELLOW}[1/8] Checking prerequisites...${NC}"
 
 if ! command -v docker &> /dev/null; then
     echo -e "${RED}ERROR: Docker is not installed or not in PATH${NC}"
@@ -47,7 +47,7 @@ echo "  ✓ Docker daemon is running"
 # ============================================================
 # 2. API key (Docker secret — not environment variable)
 # ============================================================
-echo -e "${YELLOW}[2/9] Checking API key...${NC}"
+echo -e "${YELLOW}[2/8] Checking API key...${NC}"
 
 mkdir -p secrets
 
@@ -70,25 +70,9 @@ chmod 0400 secrets/zai_api_key.txt
 echo "  ✓ ZAI_API_KEY loaded from secrets/zai_api_key.txt (mode 0400)"
 
 # ============================================================
-# 3. Frontend token (Docker secret)
+# 3. Create workspace directories
 # ============================================================
-echo -e "${YELLOW}[3/9] Checking frontend token...${NC}"
-
-if [ ! -f secrets/frontend_token.txt ]; then
-    echo "  Generating frontend token..."
-    openssl rand -hex 32 > secrets/frontend_token.txt
-    chmod 0400 secrets/frontend_token.txt
-    echo -e "${GREEN}  ✓ Frontend token generated${NC}"
-else
-    echo "  ✓ Frontend token already exists"
-fi
-
-FRONTEND_TOKEN=$(cat secrets/frontend_token.txt)
-
-# ============================================================
-# 4. Create workspace directories
-# ============================================================
-echo -e "${YELLOW}[4/9] Creating workspace directories...${NC}"
+echo -e "${YELLOW}[3/8] Creating workspace directories...${NC}"
 
 mkdir -p workspace/jobs
 mkdir -p workspace/jobs/processed
@@ -113,9 +97,9 @@ echo "  ✓ workspace/review/       (pending human QA review)"
 echo "  ✓ workspace/logs/         (skill execution logs)"
 
 # ============================================================
-# 5. Security config
+# 4. Security config
 # ============================================================
-echo -e "${YELLOW}[5/9] Checking security configuration...${NC}"
+echo -e "${YELLOW}[4/8] Checking security configuration...${NC}"
 
 if [ ! -f security/squid.conf ]; then
     echo -e "${RED}ERROR: security/squid.conf not found${NC}"
@@ -126,9 +110,9 @@ echo "  ✓ Egress proxy (squid) config found"
 echo "  ✓ Using Docker's default seccomp profile"
 
 # ============================================================
-# 6. Pull images and build
+# 5. Pull images and build
 # ============================================================
-echo -e "${YELLOW}[6/9] Pulling Docker images...${NC}"
+echo -e "${YELLOW}[5/8] Pulling Docker images...${NC}"
 
 echo "  Pulling OpenClaw 2026.3.2 (official image from ghcr.io)..."
 docker pull ghcr.io/openclaw/openclaw:2026.3.2
@@ -139,17 +123,17 @@ docker pull ubuntu/squid:6.6-24.04_beta
 echo "  ✓ Images pulled"
 
 # ============================================================
-# 8. Build frontend
+# 6. Build frontend
 # ============================================================
-echo -e "${YELLOW}[8/9] Building frontend...${NC}"
+echo -e "${YELLOW}[6/8] Building frontend...${NC}"
 
 (cd frontend && npm install && npm run build)
 echo "  ✓ Frontend built"
 
 # ============================================================
-# 9. Start services
+# 7. Start services
 # ============================================================
-echo -e "${YELLOW}[9/9] Starting services...${NC}"
+echo -e "${YELLOW}[7/8] Starting services...${NC}"
 
 docker compose up -d egress-proxy
 echo "  ✓ Egress proxy started"
@@ -202,9 +186,6 @@ echo -e "${GREEN}============================================================${N
 echo -e "${GREEN}  Setup complete!${NC}"
 echo -e "${GREEN}============================================================${NC}"
 echo ""
-echo -e "  ${GREEN}Frontend token (share with your team):${NC}"
-echo -e "     ${BLUE}${FRONTEND_TOKEN}${NC}"
-echo ""
 echo -e "  Frontend URL:"
 echo -e "     ${BLUE}http://localhost:3000${NC}"
 echo ""
@@ -222,7 +203,7 @@ echo ""
 echo -e "  4. Check for output:"
 echo -e "     ${BLUE}watch -n 2 ls workspace/output/${NC}"
 echo ""
-echo -e "  5. Open the frontend:"
+echo -e "  5. Open the frontend and enter your AI provider API key:"
 echo -e "     ${BLUE}http://localhost:3000${NC}"
 echo ""
 echo "  Security reminder:"

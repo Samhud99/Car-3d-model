@@ -1,19 +1,27 @@
-import type { CarsData, Job } from "../types.js";
+import type { CarsData, Credentials, Job } from "../types.js";
 
-const TOKEN_KEY = "car-model-token";
+const PROVIDER_KEY = "car-model-provider";
+const API_KEY = "car-model-apikey";
 
 let authFailureHandler: (() => void) | null = null;
 
-export function getToken(): string | null {
-  return localStorage.getItem(TOKEN_KEY);
+export function getCredentials(): Credentials | null {
+  const provider = localStorage.getItem(PROVIDER_KEY);
+  const apiKey = localStorage.getItem(API_KEY);
+  if (provider && apiKey) {
+    return { provider, apiKey };
+  }
+  return null;
 }
 
-export function setToken(token: string): void {
-  localStorage.setItem(TOKEN_KEY, token);
+export function setCredentials(provider: string, apiKey: string): void {
+  localStorage.setItem(PROVIDER_KEY, provider);
+  localStorage.setItem(API_KEY, apiKey);
 }
 
-export function clearToken(): void {
-  localStorage.removeItem(TOKEN_KEY);
+export function clearCredentials(): void {
+  localStorage.removeItem(PROVIDER_KEY);
+  localStorage.removeItem(API_KEY);
 }
 
 export function setAuthFailureHandler(handler: () => void): void {
@@ -21,13 +29,14 @@ export function setAuthFailureHandler(handler: () => void): void {
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const token = getToken();
+  const credentials = getCredentials();
   const headers: Record<string, string> = {
     ...(options.headers as Record<string, string>),
   };
 
-  if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
+  if (credentials) {
+    headers["X-Provider"] = credentials.provider;
+    headers["X-Api-Key"] = credentials.apiKey;
   }
 
   if (options.body) {
@@ -37,7 +46,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(path, { ...options, headers });
 
   if (response.status === 401) {
-    clearToken();
+    clearCredentials();
     if (authFailureHandler) {
       authFailureHandler();
     }

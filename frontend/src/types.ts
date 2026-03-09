@@ -22,3 +22,8 @@ export interface Job {
   status: string;
   createdAt: string;
 }
+
+export interface Credentials {
+  provider: string;
+  apiKey: string;
+}
